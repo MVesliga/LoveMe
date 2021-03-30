@@ -1,3 +1,4 @@
+/*
 package hr.tvz.loveme;
 
 
@@ -19,3 +20,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 }
+*/
