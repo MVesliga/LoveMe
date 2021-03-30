@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\main",
+    "\\src\\main\\resources",
+    "\\src\\main\\resources\\templates",
+    "\\src\\main\\resources\\templates\\Images",
+    "\\src\\test\\java",
+    "\\src\\test\\java\\hr",
+    "\\src\\test\\java\\hr\\tvz",
+    "\\src\\test\\java\\hr\\tvz\\loveme"
+  ],
+  "SelectedNode": "\\src\\main\\resources\\templates\\index.html",
+  "PreviewInSolutionExplorer": false
+}
