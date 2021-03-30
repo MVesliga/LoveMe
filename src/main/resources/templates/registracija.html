@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body th:style="'background:url('+ @{/images/indexWallpaper.jpg} +') no-repeat fixed center; background-size: 100% 100%;'">
+<div class="container">
+    <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
+        <div class="col-md-8 box-bored-style">
+            <h1>Registracija</h1>
+            <form th:action="@{/registracija}" th:object="${korisnikForm}" method="POST">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="ime" th:text="#{registracijaForm.ime}">Ime</label>
+                        <input type="text" class="form-control" id="ime" th:field="*{ime}">
+                        <div class="invalid-feedback"
+                             th:if="${#fields.hasErrors('ime')}"
+                        th:errors="*{ime}">Ime error</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="prezime" th:text="#{registracijaForm.prezime}">Prezime</label>
+                        <input type="text" class="form-control" id="prezime" th:field="*{prezime}">
+                        <div class="invalid-feedback"
+                             th:if="${#fields.hasErrors('prezime')}"
+                             th:errors="*{prezime}">Prezime error</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="korisnickoIme" th:text="#{registracijaForm.korisnickoIme}">Korisničko ime</label>
+                    <input type="text" class="form-control" id="korisnickoIme" th:field="*{korisnickoIme}">
+                    <div class="invalid-feedback"
+                         th:if="${#fields.hasErrors('korisnickoIme')}"
+                         th:errors="*{korisnickoIme}">Korisnicko ime error</div>
+                </div>
+                <div class="form-group">
+                    <label for="email" th:text="#{registracijaForm.email}">Email</label>
+                    <input type="email" class="form-control" id="email" th:field="*{email}">
+                    <div class="invalid-feedback"
+                         th:if="${#fields.hasErrors('email')}"
+                         th:errors="*{email}">Email error</div>
+                </div>
+                <div class="form-group">
+                    <label for="lozinka" th:text="#{registracijaForm.lozinka}">Lozinka</label>
+                    <input type="password" class="form-control" id="lozinka" th:field="*{lozinka}">
+                    <div class="invalid-feedback"
+                         th:if="${#fields.hasErrors('lozinka')}"
+                         th:errors="*{lozinka}">Lozinka error</div>
+                </div>
+                <div class="form-group">
+                    <label for="potvrdiLozinku" th:text="#{registracijaForm.potvrditeLozinku}">Potvrdite lozinku</label>
+                    <input type="password" class="form-control" id="potvrdiLozinku" th:field="*{ponovljenaLozinka}">
+                    <div class="invalid-feedback"
+                         th:if="${#fields.hasErrors('ponovljenaLozinka')}"
+                         th:errors="*{ponovljenaLozinka}">Ponovljena lozinka error</div>
+                </div>
+                <a class="btn btn-outline-info" th:text="#{label.back}" th:href="@{/}"></a>
+                <button type="submit" class="btn btn-outline-info float-right" th:text="#{label.submit}"></button>
+            </form>
+            <br />
+            <hr />
+            <p class="text-center"><span th:text="#{msg.login}"></span> <a th:href="@{/login}" th:text="#{label.login}"></a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
