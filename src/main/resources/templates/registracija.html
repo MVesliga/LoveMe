@@ -5,7 +5,7 @@
 <div class="container">
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
-            <h1>Registracija</h1>
+            <h1 th:text="#{label.login}">Registracija</h1>
             <form th:action="@{/registracija}" th:object="${korisnikForm}" method="POST">
                 <div class="row">
                     <div class="form-group col-md-6">
@@ -56,7 +56,7 @@
             </form>
             <br />
             <hr />
-            <p class="text-center"><span th:text="#{msg.login}"></span> <a th:href="@{/login}" th:text="#{label.login}"></a></p>
+            <p class="text-center"><span th:text="#{msg.login}"></span> <a th:href="@{/prijava}" th:text="#{label.login}"></a></p>
         </div>
     </div>
 </div>
