@@ -15,6 +15,7 @@
     <description>Spring Boot MVC application for our university course.</description>
     <properties>
         <java.version>1.8</java.version>
+        <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -66,6 +67,18 @@
             <artifactId>javax.el</artifactId>
             <version>3.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -84,5 +97,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

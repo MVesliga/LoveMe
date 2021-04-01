@@ -15,7 +15,7 @@
             <div class="text-center">
                 <h1 align="center" th:text="#{welcome.msg}"></h1>
                 <p th:text="#{loveMe.description}"></p>
-                <button th:text="#{btn.login}" class="btn btn-outline-info">Login</button>
+                <a th:href="@{/prijava}" th:text="#{btn.login}" class="btn btn-outline-info">Login</a>
                 <hr />
                 <p><span th:text="#{msg.register}"></span> <a th:href="@{/registracija}" th:text="#{label.register}"></a></p>
             </div>

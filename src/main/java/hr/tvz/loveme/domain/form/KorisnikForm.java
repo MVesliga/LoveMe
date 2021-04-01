@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -13,7 +14,8 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 public class KorisnikForm {
 
-    @NotEmpty(message = "#{ime.notEmpty}")
+    private Integer id;
+    @NotEmpty(message = "Ne valja ime")
     private String ime;
     private String prezime;
     private String korisnickoIme;
