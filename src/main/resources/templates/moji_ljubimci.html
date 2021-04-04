@@ -21,7 +21,7 @@
     
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+                <li class="nav-item active">
                     <img src="../static/images/petIcon.png" height="30px" th:src="@{images/petIcon.png}"/><a class="nav-link" th:href="@{/moji_ljubimci}" th:text="#{nav.pets}" style="display: inline;"></a>
                 </li>
                 <li class="nav-item">
@@ -38,53 +38,58 @@
     </nav>
     <br>
     <br>
-    <div class="container">
+    <div class="container" style="display: flex; justify-content: center;">
         <div class="row">
-            <div class="col-sm">
-                <img src="../static/images/ljudiSljubimcima-2.jpg" class="img-fluid" alt="Responsive image" th:src="@{images/ljudiSljubimcima-2.jpg}"/>
-            </div>
-            <div class="col-sm">
-                <br>
-                <h1 th:text="#{welcome.msg}"></h1>
-                <h2 th:text="#{landing.poruka}"></h2>
-                <a class="btn btn-primary" role="button" th:href="@{/novi_ljubimac}">
-                    <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
-                    <p th:text="#{landing.gumb}" style="display: inline;"></p>
-                </a>
-            </div>
-        </div>
-        <br>
-        <br>
-        <h1 th:text="#{landing.poruka2}"></h1>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-sm">
-                <div class="card" style="width: 24rem;">
-                    <img class="card-img-top" height="250px" src="../static/images/profil.png" alt="profil_ljubimca" th:src="@{images/profil.png}"/>
-                    <div class="card-body">
-                        <p class="card-text"  th:text="#{landing.cardProfil}"></p>
-                    </div>
+            <div class="card" style="width: 22rem;">
+                <br><p style="text-align: center;">Pas<hr></p>
+                <img src="../static/images/forumIcon.png" th:src="@{images/forumIcon.png}"/>
+                <div class="card-body">
+                    <p class="card-text">
+                        <p th:text="#{ljubimci.vrsta}"></p>
+                        <p th:text="#{ljubimci.dob}"></p>
+                        <p th:text="#{ljubimci.veterinar}"></p>
+                        <p th:text="#{ljubimci.hrana}"></p>
+                        <p th:text="#{ljubimci.igracka}"></p>
+                        <a class="btn btn-primary" role="button" th:href="@{/ljubimac}">
+                            <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
+                            <p th:text="#{ljubimci.detalji}" style="display: inline;"></p>
+                        </a>
+                    </p>
                 </div>
             </div>
-            <div class="col-sm">
-                <div class="card" style="width: 24rem;">
-                    <img class="card-img-top" src="../static/images/ljubimci.jpg" alt="ljubimci" th:src="@{images/ljubimci.jpg}"/>
-                    <div class="card-body">
-                        <p class="card-text" th:text="#{landing.cardLjubimci}"></p>
-                    </div>
+            &nbsp&nbsp&nbsp&nbsp
+            <div class="card" style="width: 22rem;">
+                <br><p style="text-align: center;">Macka<hr></p>
+                <img src="../static/images/forumIcon.png" th:src="@{images/forumIcon.png}"/>
+                <div class="card-body">
+                    <p class="card-text">
+                        <p th:text="#{ljubimci.vrsta}"></p>
+                        <p th:text="#{ljubimci.dob}"></p>
+                        <p th:text="#{ljubimci.veterinar}"></p>
+                        <p th:text="#{ljubimci.hrana}"></p>
+                        <p th:text="#{ljubimci.igracka}"></p>
+                        <a class="btn btn-primary" role="button" th:href="@{/ljubimac}">
+                            <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
+                            <p th:text="#{ljubimci.detalji}" style="display: inline;"></p>
+                        </a>
+                    </p>
                 </div>
             </div>
-            <div class="col-sm">
-                <div class="card" style="width: 24rem;">
-                    <img class="card-img-top" src="../static/images/raspored.png" alt="raspored_ljubimca" th:src="@{images/raspored.png}"/>
-                    <div class="card-body">
-                        <p class="card-text" th:text="#{landing.cardRaspored}"></p>
-                    </div>
-                </div>
-            </div>
+            <a>--></a>
         </div>
     </div>
+
+    <p id="demo"></p>
+
+<script>
+var cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
+var text = "";
+var i;
+for (i = 0; i < cars.length; i++) {
+  text += cars[i] + "<br>";
+}
+document.getElementById("demo").innerHTML = text;
+</script>
 
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->

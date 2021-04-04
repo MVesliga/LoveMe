@@ -46,4 +46,24 @@ public class IndexController {
     public String login(){
         return "login";
     }
+
+    @GetMapping("/landing")
+    public String landing(){
+        return "landing";
+    }
+
+    @GetMapping("/moji_ljubimci")
+    public String moji_ljubimci(){
+        return "moji_ljubimci";
+    }
+
+    @GetMapping("/ljubimac")
+    public String ljubimac(){
+        return "ljubimac";
+    }
+
+    @GetMapping("/novi_ljubimac")
+    public String novi_ljubimac(){
+        return "novi_ljubimac";
+    }
 }
