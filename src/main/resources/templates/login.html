@@ -6,17 +6,17 @@
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
             <h1 th:text="#{label.login}">Login</h1>
-            <form name="f" th:object="${loginForm}" th:action="@{/prijava}" method="post">
+            <form th:object="${loginForm}" th:action="@{/prijava}" method="post">
                 <div class="form-group">
                     <label for="korisnickoIme" th:text="#{loginForm.korisnickoIme}">Korisničko ime</label>
-                    <input type="text" class="form-control" id="korisnickoIme" />
+                    <input type="text" class="form-control" id="korisnickoIme" th:field="*{korisnickoIme}"/>
                     <div class="invalid-message"
                          th:if="${#fields.hasErrors('korisnickoIme')}"
                          th:errors="*{korisnickoIme}">Ime error</div>
                 </div>
                 <div class="form-group">
                     <label for="lozinka" th:text="#{loginForm.lozinka}">Lozinka</label>
-                    <input type="password" class="form-control" id="lozinka" />
+                    <input type="password" class="form-control" id="lozinka" th:field="*{lozinka}"/>
                     <div class="invalid-message"
                          th:if="${#fields.hasErrors('lozinka')}"
                          th:errors="*{lozinka}">Ime error</div>

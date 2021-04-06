@@ -2,6 +2,7 @@ package hr.tvz.loveme.controllers;
 
 import hr.tvz.loveme.domain.form.KorisnikForm;
 import hr.tvz.loveme.domain.form.LoginForm;
+import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -57,6 +58,11 @@ public class IndexController {
             return "login";
         }
 
-        return "redirect:/";
+        return "redirect:/love-me";
+    }
+
+    @GetMapping("/love-me")
+    public String getLandingPage() {
+        return "landing";
     }
 }
