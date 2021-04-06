@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -22,16 +22,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <img src="../static/images/petIcon.png" height="30px" th:src="@{images/petIcon.png}"/><a class="nav-link" th:href="@{/moji_ljubimci}" th:text="#{nav.pets}" style="display: inline;"></a>
+                    <a class="nav-link" th:href="@{/moji-ljubimci}"><img height="30px" th:src="@{/images/petIcon.png}"> Moji ljubimci</a>
                 </li>
                 <li class="nav-item">
-                    <img height="30px" src="../static/images/userIcon.png" th:src="@{images/userIcon.png}"/><a class="nav-link" href="#" th:text="#{nav.profile}" style="display: inline;"></a>
+                    <a class="nav-link" th:href="@{/profil}"><img height="30px" th:src="@{/images/userIcon.png}"> Moj profil</a>
                 </li>
                 <li class="nav-item">
-                    <img height="30px" src="../static/images/forumIcon.png" th:src="@{images/forumIcon.png}"/><a class="nav-link" href="#" th:text="#{nav.forum}" style="display: inline;"></a>
+                    <a class="nav-link" th:href="@{/forum}"><img height="30px" th:src="@{/images/forumIcon.png}"> Forum</a>
                 </li>
                 <li class="nav-item">
-                    <b><a class="nav-link" href="#" th:text="#{nav.logout}" style="display: inline;"></a></b>
+                    <a class="nav-link" th:href="@{/}"><b>Logout</b></a>
                 </li>
             </ul>
         </div>

@@ -5,10 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class KorisnikController {
-
-    @GetMapping("/profil")
-    public String getProfil(Model model) {
-        return "profil";
+public class ForumController {
+    @GetMapping("/forum")
+    public String getForum(Model model) {
+        return "forum";
     }
 }
