@@ -41,15 +41,15 @@
     <div class="container" style="display: flex; justify-content: center;">
         <div class="row">
             <div class="card" style="width: 22rem;">
-                <br><p style="text-align: center;">Pas<hr></p>
+                <br><p style="text-align: center;" th:text=" ${test_ljubimci[0].ime}"><hr></p>
                 <img src="../static/images/forumIcon.png" th:src="@{images/forumIcon.png}"/>
                 <div class="card-body">
                     <p class="card-text">
-                        <p th:text="#{ljubimci.vrsta}"></p>
-                        <p th:text="#{ljubimci.dob}"></p>
-                        <p th:text="#{ljubimci.veterinar}"></p>
-                        <p th:text="#{ljubimci.hrana}"></p>
-                        <p th:text="#{ljubimci.igracka}"></p>
+                        <p th:text="#{ljubimci.vrsta} + ${test_ljubimci[0].vrsta}"></p>
+                        <p th:text="#{ljubimci.dob} + ${test_ljubimci[0].dob}"></p>
+                        <p th:text="#{ljubimci.veterinar} + ${test_ljubimci[0].veterinar}"></p>
+                        <p th:text="#{ljubimci.hrana} + ${test_ljubimci[0].hrana}"></p>
+                        <p th:text="#{ljubimci.igracka} + ${test_ljubimci[0].igracka}"></p>
                         <a class="btn btn-primary" role="button" th:href="@{/ljubimac}">
                             <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
                             <p th:text="#{ljubimci.detalji}" style="display: inline;"></p>
@@ -75,22 +75,10 @@
                     </p>
                 </div>
             </div>
-            <a>--></a>
         </div>
     </div>
-
-    <p id="demo"></p>
-
-<script>
-var cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
-var text = "";
-var i;
-for (i = 0; i < cars.length; i++) {
-  text += cars[i] + "<br>";
-}
-document.getElementById("demo").innerHTML = text;
-</script>
-
+    <script>
+    </script>
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
