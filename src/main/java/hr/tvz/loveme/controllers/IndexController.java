@@ -65,4 +65,10 @@ public class IndexController {
     public String getLandingPage() {
         return "landing";
     }
+
+    @GetMapping("/logout")
+    public String logout() {
+
+        return "redirect:/";
+    }
 }
