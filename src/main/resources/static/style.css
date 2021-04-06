@@ -15,3 +15,7 @@
 .navbar-custom {
     background-color: #FFF4ED;
 }
+
+.invalid-message{
+    color: red;
+}
