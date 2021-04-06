@@ -1,6 +1,7 @@
 package hr.tvz.loveme.controllers;
 
 import hr.tvz.loveme.domain.form.KorisnikForm;
+import hr.tvz.loveme.domain.form.LoginForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/")
@@ -21,29 +24,39 @@ public class IndexController {
     }
 
     @GetMapping("/registracija")
-    public String getKorisnikRegistracijaForm(final Model model) {
+    public String getKorisnikRegistracijaForm(Model model) {
         if (!model.containsAttribute("korisnikForm")) {
-            KorisnikForm korisnikForm = new KorisnikForm();
-            model.addAttribute("korisnikForm", korisnikForm);
+            model.addAttribute("korisnikForm", new KorisnikForm());
         }
+
         return "registracija";
     }
 
     @PostMapping("/registracija")
-    public String registerKokrisnik(@ModelAttribute @Validated KorisnikForm korisnikForm,
-                                    BindingResult bindingResult,
-                                    RedirectAttributes redirectAttributes) {
+    public String registerKokrisnik(@ModelAttribute @Valid KorisnikForm korisnikForm,
+                                    BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.korisnikForm", bindingResult);
-            redirectAttributes.addFlashAttribute("korisnikForm", korisnikForm);
-            return "redirect:/registracija";
+            return "registracija";
         }
 
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("/prijava")
-    public String login(){
+    public String getLoginForm(Model model){
+        if (!model.containsAttribute("loginForm")) {
+            model.addAttribute("loginForm", new LoginForm());
+        }
         return "login";
+    }
+
+    @PostMapping("/prijava")
+    public String login(@ModelAttribute @Validated LoginForm loginForm,
+                        BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "login";
+        }
+
+        return "redirect:/";
     }
 }
