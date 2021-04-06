@@ -12,16 +12,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#"><img height="30px" th:src="@{/images/petIcon.png}"> Moji ljubimci</a>
+                <a class="nav-link" th:href="@{/moji-ljubimci}"><img height="30px" th:src="@{/images/petIcon.png}"> Moji ljubimci</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><img height="30px" th:src="@{/images/userIcon.png}"> Moj profil</a>
+                <a class="nav-link" th:href="@{/profil}"><img height="30px" th:src="@{/images/userIcon.png}"> Moj profil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><img height="30px" th:src="@{/images/forumIcon.png}"> Forum</a>
+                <a class="nav-link" th:href="@{/forum}"><img height="30px" th:src="@{/images/forumIcon.png}"> Forum</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><b>Logout</b></a>
+                <a class="nav-link" th:href="@{/}"><b>Logout</b></a>
             </li>
         </ul>
     </div>
@@ -51,7 +51,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card" style="width: 18rem;" th:class="box-bored-style">
-                <img class="card-img-top" height="10%" th:src="@{/images/profil.png}" alt="profil_ljubimca">
+                <img class="card-img-top" th:src="@{/images/profil.png}" alt="profil_ljubimca">
                 <div class="card-body">
                     <p class="card-text">Stvaranje profila koji sadrži sve njegove informacije</p>
                 </div>
@@ -59,7 +59,7 @@
         </div>
         <div class="col-md-4">
             <div class="card" style="width: 18rem;" th:class="box-bored-style">
-                <img class="card-img-top" height="10%" th:src="@{/images/raspored.png}" alt="raspored_ljubimca">
+                <img class="card-img-top" th:src="@{/images/raspored.png}" alt="raspored_ljubimca">
                 <div class="card-body">
                     <p class="card-text">Stvaranje rasporeda šetnji, prehrane, posjeta veterinaru...</p>
                 </div>
@@ -67,13 +67,15 @@
         </div>
         <div class="col-md-4">
             <div class="card" style="width: 18rem;" th:class="box-bored-style">
-                <img class="card-img-top" height="10%" th:src="@{/images/ljubimci.jpg}" alt="ljubimci">
+                <img class="card-img-top" th:src="@{/images/ljubimci.jpg}" alt="ljubimci">
                 <div class="card-body">
                     <p class="card-text">Kontinuirano praćenje baš svakog Vašeg ljubimca</p>
                 </div>
             </div>
         </div>
     </div>
+    <br>
+    <br>
 </div>
 
 <!-- Optional JavaScript; choose one of the two! -->
