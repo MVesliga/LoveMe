@@ -3,6 +3,7 @@ package hr.tvz.loveme.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -21,6 +22,8 @@ public class Korisnik {
     private String ime;
     @Column
     private String prezime;
+    @Column
+    private Date datumRodjenja;
     @Column
     private String korisnickoIme;
     @Column

@@ -21,6 +21,7 @@ public class KorisnikForm {
     private String ime;
     @NotBlank(message = "{registracijaForm.prezime.notBlank}")
     private String prezime;
+    private String datumRodjenja;
     @NotBlank(message = "{registracijaForm.korisnickoIme.notBlank}")
     private String korisnickoIme;
     @NotBlank(message = "{registracijaForm.email.notBlank}")
