@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS korisnik (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ime VARCHAR(45) NOT NULL,
+  prezime VARCHAR(45) NOT NULL,
+  datum_rodjenja DATE NULL,
+  email VARCHAR(45) NOT NULL,
+  korisnicko_ime VARCHAR(45) NULL,
+  lozinka VARCHAR(45) NULL,
+  isAdmin VARCHAR(1) NULL
+  );
