@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping("/love-me")
 public class LjubimacController {
 
     @GetMapping(value = "/moji-ljubimci")

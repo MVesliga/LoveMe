@@ -3,78 +3,56 @@
 <head th:replace="fragments/head"></head>
 <body th:style="'background:url('+ @{/images/indexWallpaper.jpg} +') no-repeat fixed center; background-size: 100% 100%;'">
 
-<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-    <a class="navbar-brand" href="#">Logo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{/moji-ljubimci}"><img height="30px" th:src="@{/images/petIcon.png}"> Moji ljubimci</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/profil}"><img height="30px" th:src="@{/images/userIcon.png}"> Moj profil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/forum}"><img height="30px" th:src="@{/images/forumIcon.png}"> Forum</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/}"><b>Logout</b></a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<nav th:replace="fragments/navBar"></nav>
 <br>
 <br>
 
 <div class="container">
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
-        <form>
-            <div class="mb-3">
-              <label for="ime_ljubimci" class="form-label" th:text="#{ljubimci.ime}"></label>
-              <input type="text" class="form-control" id="ime_ljubimci">
-            </div>
-            <div class="mb-3">
-              <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
-              <input type="text" class="form-control" id="vrsta_ljubimci">
-            </div>
-            <div class="mb-3">
-              <label for="dob_ljubimci" class="form-label" th:text="#{ljubimci.dob}"></label>
-              <input type="number" class="form-control" id="dob_ljubimci">
-            </div>
-            <div class="form-group">
-                <label for="veterinar" class="form-label" th:text="#{ljubimci.veterinar}"></label>
-                <div class='input-group date' id='veterinar'>
-                   <input type='text' class="form-control" />
-                   <span class="input-group-addon">
+            <form>
+                <div class="mb-3">
+                    <label for="ime_ljubimci" class="form-label" th:text="#{ljubimci.ime}"></label>
+                    <input type="text" class="form-control" id="ime_ljubimci">
+                </div>
+                <div class="mb-3">
+                    <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
+                    <input type="text" class="form-control" id="vrsta_ljubimci">
+                </div>
+                <div class="mb-3">
+                    <label for="dob_ljubimci" class="form-label" th:text="#{ljubimci.dob}"></label>
+                    <input type="number" class="form-control" id="dob_ljubimci">
+                </div>
+                <div class="form-group">
+                    <label for="veterinar" class="form-label" th:text="#{ljubimci.veterinar}"></label>
+                    <div class='input-group date' id='veterinar'>
+                        <input type='text' class="form-control"/>
+                        <span class="input-group-addon">
                    <span class="glyphicon glyphicon-calendar"></span>
                    </span>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="cijepljen">
-                <label class="form-check-label" for="cijepljen" th:text="#{ljubimci.cijepljen2}"></label>
-            </div>
-            <div class="mb-3">
-                <label for="obuka" class="form-label" th:text="#{ljubimci.obuka}"></label>
-                <input type="text" class="form-control" id="obuka">
-            </div>
-            <div class="mb-3">
-                <label for="hrana" class="form-label" th:text="#{ljubimci.hrana}"></label>
-                <input type="text" class="form-control" id="hrana">
-            </div>
-            <div class="mb-3">
-                <label for="igracka" class="form-label" th:text="#{ljubimci.igracka}"></label>
-                <input type="text" class="form-control" id="igracka">
-            </div>
-            <button type="submit" class="btn btn-primary">
-                <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
-                <p th:text="#{ljubimci.dodaj}" style="display: inline;"></p>
-            </button>
-        </form>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="cijepljen">
+                    <label class="form-check-label" for="cijepljen" th:text="#{ljubimci.cijepljen2}"></label>
+                </div>
+                <div class="mb-3">
+                    <label for="obuka" class="form-label" th:text="#{ljubimci.obuka}"></label>
+                    <input type="text" class="form-control" id="obuka">
+                </div>
+                <div class="mb-3">
+                    <label for="hrana" class="form-label" th:text="#{ljubimci.hrana}"></label>
+                    <input type="text" class="form-control" id="hrana">
+                </div>
+                <div class="mb-3">
+                    <label for="igracka" class="form-label" th:text="#{ljubimci.igracka}"></label>
+                    <input type="text" class="form-control" id="igracka">
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
+                    <p th:text="#{ljubimci.dodaj}" style="display: inline;"></p>
+                </button>
+            </form>
         </div>
     </div>
 </div>
