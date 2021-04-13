@@ -1,6 +1,8 @@
 package hr.tvz.loveme.controllers;
 
 import hr.tvz.loveme.domain.Ljubimac;
+import hr.tvz.loveme.repository.LjubimacRepository;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,12 @@ import java.util.List;
 
 @Controller
 public class LjubimacController {
+
+    private LjubimacRepository ljubimacRepository;
+
+    public LjubimacController(LjubimacRepository ljubimacRepository) {
+        this.ljubimacRepository = ljubimacRepository;
+    }
 
     @GetMapping(value = "/moji-ljubimci")
     public String read(Model model) {
@@ -29,11 +37,6 @@ public class LjubimacController {
         return "moji_ljubimci";
     }
 
-    /* @GetMapping("/moji_ljubimci")
-    public String moji_ljubimci(){
-        return "moji_ljubimci";
-    } */
-
     @GetMapping("/ljubimac")
     public String ljubimac(){
         return "ljubimac";
@@ -42,5 +45,10 @@ public class LjubimacController {
     @GetMapping("/novi-ljubimac")
     public String novi_ljubimac(){
         return "novi_ljubimac";
+    }
+
+    @GetMapping("/uredi_ljubimca")
+    public String uredi_ljubimca(){
+        return "uredi_ljubimca";
     }
 }

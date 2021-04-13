@@ -35,17 +35,20 @@
         <form>
             <div class="mb-3">
               <label for="ime_ljubimci" class="form-label" th:text="#{ljubimci.ime}"></label>
-              <input type="text" class="form-control" id="ime_ljubimci">
+              <input type="text" class="form-control" id="ime_ljubimci" value="pas">
             </div>
             <div class="mb-3">
               <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
-              <input type="text" class="form-control" id="vrsta_ljubimci">
+              <input type="text" class="form-control" id="vrsta_ljubimci" value="pas">
             </div>
             <div class="mb-3">
               <label for="dob_ljubimci" class="form-label" th:text="#{ljubimci.dob}"></label>
-              <input type="number" class="form-control" id="dob_ljubimci">
+              <input type="number" class="form-control" id="dob_ljubimci" value=1>
             </div>
-            Datum kako?
+            <div class="mb-3">
+                <label for="veterinar" class="form-label" th:text="#{ljubimci.veterinar}"></label>
+                <input type="date" class="form-control" id="veterinar">
+              </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="cijepljen">
                 <label class="form-check-label" for="cijepljen" th:text="#{ljubimci.cijepljen2}"></label>
@@ -64,7 +67,7 @@
             </div>
             <button type="submit" class="btn btn-primary">
                 <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
-                <p th:text="#{ljubimci.dodaj}" style="display: inline;"></p>
+                <p th:text="#{ljubimci.spremi}" style="display: inline;"></p>
             </button>
         </form>
         </div>

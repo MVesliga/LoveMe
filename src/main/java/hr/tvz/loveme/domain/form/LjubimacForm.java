@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import java.sql.Date;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -17,8 +18,11 @@ public class LjubimacForm {
 
     private Integer id;
     private String ime;
+    @NotBlank(message = "{registracijaForm.imeLjubimca.notBlank}")
     private String vrsta;
+    @NotBlank(message = "{registracijaForm.vrstaLjubimca.notBlank}")
     private Integer dob;
+    @NotBlank(message = "{registracijaForm.dobLjubimca.notBlank}")
     private Date veterinar;
     private String hrana;
     private String igracka;

@@ -54,14 +54,18 @@
                     </div>
                     <div class="col-lg-8">
                         <p>
-                            <p th:text="#{ljubimci.vrsta}"></p>
-                            <p th:text="#{ljubimci.ime}"></p>
-                            <p th:text="#{ljubimci.dob}"></p>
-                            <p th:text="#{ljubimci.veterinar}"></p>
-                            <p th:text="#{ljubimci.cijepljen}"></p>
-                            <p th:text="#{ljubimci.obuka}"></p>
-                            <p th:text="#{ljubimci.hrana}"></p>
-                            <p th:text="#{ljubimci.igracka}"></p>
+                            <p th:text="#{ljubimci.vrsta}">pas</p>
+                            <p th:text="#{ljubimci.ime}">pas</p>
+                            <p th:text="#{ljubimci.dob}">1</p>
+                            <p th:text="#{ljubimci.veterinar}">null</p>
+                            <p th:text="#{ljubimci.cijepljen}">ne</p>
+                            <p th:text="#{ljubimci.obuka}">null</p>
+                            <p th:text="#{ljubimci.hrana}">null</p>
+                            <p th:text="#{ljubimci.igracka}">null</p>
+                            <a class="btn btn-warning" role="button" th:href="@{/uredi_ljubimca}">
+                                <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
+                                <p th:text="#{ljubimci.uredi}" style="display: inline;"></p>
+                            </a>
                         </p>
                     </div>
                 </div>
