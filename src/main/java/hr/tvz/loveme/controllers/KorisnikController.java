@@ -2,6 +2,7 @@ package hr.tvz.loveme.controllers;
 
 import hr.tvz.loveme.domain.Korisnik;
 import hr.tvz.loveme.repository.KorisnikRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import java.util.List;
 @Controller
 public class KorisnikController {
 
+    @Autowired
     private KorisnikRepository korisnikRepository;
 
     public KorisnikController(KorisnikRepository korisnikRepository) {
@@ -22,7 +24,8 @@ public class KorisnikController {
         //TODO makmnuti kasnije
         List<Korisnik> listaKorisnika = korisnikRepository.findAll();
         Korisnik korisnik = korisnikRepository.findById(1).get();
-        System.out.println("tu sam!");
+        model.addAttribute("korisnik", korisnik);
+        System.out.println("tu sam! "+ korisnik);
 
         return "profil";
     }
