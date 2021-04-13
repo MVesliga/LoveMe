@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hr.tvz.loveme.domain.form.LoginForm;
-import jdk.nashorn.internal.objects.annotations.Getter;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
