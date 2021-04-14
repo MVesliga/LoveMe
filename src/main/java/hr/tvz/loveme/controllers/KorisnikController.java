@@ -7,6 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -19,7 +26,7 @@ public class KorisnikController {
         this.korisnikRepository = korisnikRepository;
     }
 
-    @GetMapping("/profil")
+/*    @GetMapping("/profil")
     public String getProfil(Model model) {
         //TODO makmnuti kasnije
         List<Korisnik> listaKorisnika = korisnikRepository.findAll();
@@ -28,5 +35,13 @@ public class KorisnikController {
         System.out.println("tu sam! "+ korisnik);
 
         return "profil";
+    }*/
+
+    @RequestMapping(value = "/profil", method = RequestMethod.GET)
+    @ResponseBody
+    public String currentUserName(Principal principal) {
+
+        return principal.getName();
     }
+
 }
