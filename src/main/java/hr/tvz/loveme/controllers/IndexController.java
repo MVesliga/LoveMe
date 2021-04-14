@@ -1,5 +1,7 @@
 package hr.tvz.loveme.controllers;
 
+import hr.tvz.loveme.domain.Korisnik;
+import hr.tvz.loveme.domain.KorisnikUloga;
 import hr.tvz.loveme.domain.form.KorisnikForm;
 
 import hr.tvz.loveme.domain.form.LoginForm;
@@ -45,6 +47,12 @@ public class IndexController {
     public String registerKokrisnik(@ModelAttribute @Valid KorisnikForm korisnikForm,
                                     BindingResult bindingResult,
                                     RedirectAttributes redirectAttributes) {
+
+        Korisnik existing = korisnikFacade.getKorisnikRepository().findByKorisnickoIme(korisnikForm.getKorisnickoIme());
+        if (existing != null) {
+            bindingResult.rejectValue("korisnickoIme", null, "Postoji korisnik sa unesenim korisničkim imenom!");
+        }
+
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.korisnikForm", bindingResult);
             redirectAttributes.addFlashAttribute("korisnikForm", korisnikForm);
@@ -52,7 +60,9 @@ public class IndexController {
             return "redirect:/registracija";
         }
 
+        KorisnikUloga korisnikUloga = new KorisnikUloga(korisnikForm.getKorisnickoIme(), "ROLE_USER");
         korisnikFacade.create(korisnikForm);
+        korisnikFacade.getKorisnikUlogaRepository().save(korisnikUloga);
 
         return "redirect:/";
     }

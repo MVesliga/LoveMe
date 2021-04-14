@@ -14,4 +14,6 @@ public interface KorisnikRepository extends JpaRepository<Korisnik, Integer> {
 
     @Override
     Optional<Korisnik> findById(Integer integer);
+
+    Korisnik findByKorisnickoIme(String korisnickoIme);
 }

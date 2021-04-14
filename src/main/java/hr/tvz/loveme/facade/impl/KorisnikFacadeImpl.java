@@ -5,6 +5,7 @@ import hr.tvz.loveme.domain.Korisnik;
 import hr.tvz.loveme.domain.form.KorisnikForm;
 import hr.tvz.loveme.facade.KorisnikFacade;
 import hr.tvz.loveme.repository.KorisnikRepository;
+import hr.tvz.loveme.repository.KorisnikUlogaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,12 +15,25 @@ import java.util.Optional;
 public class KorisnikFacadeImpl  implements KorisnikFacade {
 
     private KorisnikRepository korisnikRepository;
+    private KorisnikUlogaRepository korisnikUlogaRepository;
     private KorisnikConverter korisnikConverter;
 
     public KorisnikFacadeImpl(KorisnikRepository korisnikRepository,
+                              KorisnikUlogaRepository korisnikUlogaRepository,
                               KorisnikConverter korisnikConverter) {
         this.korisnikRepository = korisnikRepository;
+        this.korisnikUlogaRepository = korisnikUlogaRepository;
         this.korisnikConverter = korisnikConverter;
+    }
+
+    @Override
+    public KorisnikRepository getKorisnikRepository() {
+        return korisnikRepository;
+    }
+
+    @Override
+    public KorisnikUlogaRepository getKorisnikUlogaRepository() {
+        return korisnikUlogaRepository;
     }
 
     @Override
