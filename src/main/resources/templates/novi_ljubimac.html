@@ -32,16 +32,36 @@
 <div class="container">
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
-        <form>
+        <form  th:action="@{/novi-ljubimac}" th:object="${ljubimacForm}" method="POST">
+            <p th:Integer id = ((UserDetails)principal).getId();></p>
+            <input type="number" class="form-control" id="korisnik_id" name="korisnik_id" th:value="${id}">
             <div class="mb-3">
               <label for="ime_ljubimci" class="form-label" th:text="#{ljubimci.ime}"></label>
               <input type="text" class="form-control" id="imeLjubimci" name="imeLjubimci">
               <!-- <div class="invalid-message" th:if="${#fields.hasErrors('imeLjubimci')}" th:errors="*{imeLjubimci}"></div> -->
             </div>
-            <div class="mb-3">
-              <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
-              <input type="text" class="form-control" id="vrstaLjubimci" name="vrstaLjubimci">
-              <!-- <div class="invalid-message" th:if="${#fields.hasErrors('vrsta_ljubimci')}" th:errors="*{vrsta_ljubimci}"></div> -->
+            <div class="form-group">
+                <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
+                <select class="form-control" id="vrsta_ljubimci">
+                    <option>Pas</option>
+                    <option>Mačka</option>
+                    <option>Hrčak</option>
+                    <option>Zamorac</option>
+                    <option>Miš</option>
+                    <option>Štakor</option>
+                    <option>Kunić</option>
+                    <option>Ptica</option>
+                    <option>Ribica</option>
+                    <option>Zmija</option>
+                    <option>Gušter</option>
+                    <option>Žaba</option>
+                    <option>Pauk</option>
+                    <option>Kornjača</option>
+                    <option>Patuljasta svinja</option>
+                    <option>Afrički tvor</option>
+                    <option>Činčila</option>
+                </select>
+            <!-- <div class="invalid-message" th:if="${#fields.hasErrors('vrsta_ljubimci')}" th:errors="*{vrsta_ljubimci}"></div> -->
             </div>
             <div class="mb-3">
               <label for="dob_ljubimci" class="form-label" th:text="#{ljubimci.dob}"></label>
@@ -73,56 +93,9 @@
                 <p th:text="#{ljubimci.dodaj}" style="display: inline;"></p>
             </button>
         </form>
+        <a class="btn btn-danger float-right" th:href="@{/moji-ljubimci}" th:text="#{label.back}"></a>
         </div>
     </div>
 </div>
-<script>
-     $(function () {
-   var bindDatePicker = function() {
-		$(".date").datetimepicker({
-        format:'YYYY-MM-DD',
-			icons: {
-				time: "fa fa-clock-o",
-				date: "fa fa-calendar",
-				up: "fa fa-arrow-up",
-				down: "fa fa-arrow-down"
-			}
-		}).find('input:first').on("blur",function () {
-			// check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
-			// update the format if it's yyyy-mm-dd
-			var date = parseDate($(this).val());
-
-			if (! isValidDate(date)) {
-				//create date based on momentjs (we have that)
-				date = moment().format('YYYY-MM-DD');
-			}
-
-			$(this).val(date);
-		});
-	}
-   
-   var isValidDate = function(value, format) {
-		format = format || false;
-		// lets parse the date to the best of our knowledge
-		if (format) {
-			value = parseDate(value);
-		}
-
-		var timestamp = Date.parse(value);
-
-		return isNaN(timestamp) == false;
-   }
-   
-   var parseDate = function(value) {
-		var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
-		if (m)
-			value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
-
-		return value;
-   }
-   
-   bindDatePicker();
- });
-</script>
 </body>
 </html>

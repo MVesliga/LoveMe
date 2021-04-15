@@ -6,10 +6,8 @@ import hr.tvz.loveme.repository.LjubimacRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,23 +20,18 @@ public class LjubimacController {
     }
 
     @GetMapping(value = "/moji-ljubimci")
-    public String read(Model model) {
-        Ljubimac test1 = new Ljubimac(1, "pas", "pas", 1, null, null, null, "ne", null);
-        Ljubimac test2 = new Ljubimac(2, "macka", "macka", 3, null, null, null, "ne", null);
-        Ljubimac test3 = new Ljubimac(3, "korni", "kornjaca", 112, null, null, null, "da", null);
+    public String getLjubimci(Model model) {
+        List<Ljubimac> listaLjubimaca = ljubimacRepository.findAll();
 
-        List<Ljubimac> test_ljubimci = new ArrayList<Ljubimac>();
-        test_ljubimci.add(test1);
-        test_ljubimci.add(test2);
-        test_ljubimci.add(test3);
-
-        model.addAttribute("test_ljubimci", test_ljubimci);
-
+        model.addAttribute("ljubimci", listaLjubimaca);
         return "moji_ljubimci";
     }
 
     @GetMapping("/ljubimac")
-    public String ljubimac(){
+    public String getLjubimac(@RequestParam(value = "id")Integer id, Model model){
+        Ljubimac ljubimac = ljubimacRepository.findById(id).get();
+
+        model.addAttribute("ljubimac", ljubimac);
         return "ljubimac";
     }
 
@@ -47,8 +40,11 @@ public class LjubimacController {
         return "novi_ljubimac";
     }
 
-    @GetMapping("/uredi_ljubimca")
-    public String uredi_ljubimca(){
+    @GetMapping("/uredi-ljubimca")
+    public String getLjubimacEdit(@RequestParam(value = "id")Integer id, Model model){
+        Ljubimac ljubimac = ljubimacRepository.findById(id).get();
+
+        model.addAttribute("ljubimac", ljubimac);
         return "uredi_ljubimca";
     }
 }

@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -30,4 +31,6 @@ public class Korisnik {
     private String email;
     @Column
     private String lozinka;
+    @OneToMany(mappedBy = "korisnik")
+    private Set<Ljubimac> ljubimci;
 }

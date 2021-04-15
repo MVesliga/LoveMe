@@ -40,41 +40,28 @@
     <br>
     <div class="container" style="display: flex; justify-content: center;">
         <div class="row">
-            <div class="card" style="width: 22rem;">
-                <br><p style="text-align: center;" th:text=" ${test_ljubimci[0].ime}"><hr></p>
+            <div class="alert alert-danger" role="alert" th:if = "${#lists.isEmpty(ljubimci)}" th:text="#{ljubimci.nema}"></div>
+            <p><a class="btn btn-primary" th:href="@{/novi-ljubimac}">
+                <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{landing.gumb}">
+            </a></p>
+            <div class="card" style="width: 22rem;"  th:each="ljubimac : ${ljubimci}">
+                <br><p style="text-align: center;" th:text="${ljubimac.ime}"><hr></p>
                 <img src="../static/images/forumIcon.png" th:src="@{images/forumIcon.png}"/>
                 <div class="card-body">
                     <p class="card-text">
-                        <p th:text="#{ljubimci.vrsta} + ${test_ljubimci[0].vrsta}"></p>
-                        <p th:text="#{ljubimci.dob} + ${test_ljubimci[0].dob}"></p>
-                        <p th:text="#{ljubimci.veterinar} + ${test_ljubimci[0].veterinar}"></p>
-                        <p th:text="#{ljubimci.hrana} + ${test_ljubimci[0].hrana}"></p>
-                        <p th:text="#{ljubimci.igracka} + ${test_ljubimci[0].igracka}"></p>
-                        <a class="btn btn-primary" role="button" th:href="@{/ljubimac}">
+                        <p th:text="#{ljubimci.vrsta} + ' ' + ${ljubimac.vrsta}"></p>
+                        <p th:text="#{ljubimci.dob} + ' ' +  ${ljubimac.dob}"></p>
+                        <p th:text="#{ljubimci.veterinar} + ' ' +  ${ljubimac.veterinar}"></p>
+                        <p th:text="#{ljubimci.hrana} + ' ' +  ${ljubimac.hrana}"></p>
+                        <p th:text="#{ljubimci.igracka} + ' ' +  ${ljubimac.igracka}"></p>
+                        <a class="btn btn-primary" role="button" th:href="@{/ljubimac(id=${ljubimac.id})}">
                             <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
                             <p th:text="#{ljubimci.detalji}" style="display: inline;"></p>
                         </a>
                     </p>
                 </div>
             </div>
-            &nbsp&nbsp&nbsp&nbsp
-            <div class="card" style="width: 22rem;">
-                <br><p style="text-align: center;">Macka<hr></p>
-                <img src="../static/images/forumIcon.png" th:src="@{images/forumIcon.png}"/>
-                <div class="card-body">
-                    <p class="card-text">
-                        <p th:text="#{ljubimci.vrsta}"></p>
-                        <p th:text="#{ljubimci.dob}"></p>
-                        <p th:text="#{ljubimci.veterinar}"></p>
-                        <p th:text="#{ljubimci.hrana}"></p>
-                        <p th:text="#{ljubimci.igracka}"></p>
-                        <a class="btn btn-primary" role="button" th:href="@{/ljubimac}">
-                            <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
-                            <p th:text="#{ljubimci.detalji}" style="display: inline;"></p>
-                        </a>
-                    </p>
-                </div>
-            </div>
+            </p>
         </div>
     </div>
     <script>

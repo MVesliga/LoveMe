@@ -8,7 +8,6 @@ import lombok.ToString;
 import java.sql.Date;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Getter
 @Setter

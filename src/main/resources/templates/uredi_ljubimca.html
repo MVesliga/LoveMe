@@ -35,91 +35,63 @@
         <form>
             <div class="mb-3">
               <label for="ime_ljubimci" class="form-label" th:text="#{ljubimci.ime}"></label>
-              <input type="text" class="form-control" id="ime_ljubimci" value="pas">
+              <input type="text" class="form-control" id="ime_ljubimci" th:value="${ljubimac.ime}">
             </div>
-            <div class="mb-3">
-              <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
-              <input type="text" class="form-control" id="vrsta_ljubimci" value="pas">
+            <div class="form-group">
+                <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
+                <select class="form-control" id="vrsta_ljubimci" th:value="${ljubimac.vrsta}">
+                    <option>Pas</option>
+                    <option>Mačka</option>
+                    <option>Hrčak</option>
+                    <option>Zamorac</option>
+                    <option>Miš</option>
+                    <option>Štakor</option>
+                    <option>Kunić</option>
+                    <option>Ptica</option>
+                    <option>Ribica</option>
+                    <option>Zmija</option>
+                    <option>Gušter</option>
+                    <option>Žaba</option>
+                    <option>Pauk</option>
+                    <option>Kornjača</option>
+                    <option>Patuljasta svinja</option>
+                    <option>Afrički tvor</option>
+                    <option>Činčila</option>
+                </select>
             </div>
             <div class="mb-3">
               <label for="dob_ljubimci" class="form-label" th:text="#{ljubimci.dob}"></label>
-              <input type="number" class="form-control" id="dob_ljubimci" value=1>
+              <input type="number" class="form-control" id="dob_ljubimci" th:value="${ljubimac.dob}">
             </div>
             <div class="mb-3">
                 <label for="veterinar" class="form-label" th:text="#{ljubimci.veterinar}"></label>
-                <input type="date" class="form-control" id="veterinar">
+                <input type="date" class="form-control" id="veterinar" th:value="${ljubimac.veterinar}">
               </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="cijepljen">
+                <input th:if="${ljubimac.cijepljen}=='da'" type="checkbox" class="form-check-input" id="cijepljen" checked>
+                <input th:if="${ljubimac.cijepljen}=='ne'" type="checkbox" class="form-check-input" id="cijepljen">
                 <label class="form-check-label" for="cijepljen" th:text="#{ljubimci.cijepljen2}"></label>
             </div>
             <div class="mb-3">
                 <label for="obuka" class="form-label" th:text="#{ljubimci.obuka}"></label>
-                <input type="text" class="form-control" id="obuka">
+                <input type="text" class="form-control" id="obuka" th:value="${ljubimac.obuka}">
             </div>
             <div class="mb-3">
                 <label for="hrana" class="form-label" th:text="#{ljubimci.hrana}"></label>
-                <input type="text" class="form-control" id="hrana">
+                <input type="text" class="form-control" id="hrana" th:value="${ljubimac.hrana}">
             </div>
             <div class="mb-3">
                 <label for="igracka" class="form-label" th:text="#{ljubimci.igracka}"></label>
-                <input type="text" class="form-control" id="igracka">
+                <input type="text" class="form-control" id="igracka" th:value="${ljubimac.igracka}">
             </div>
             <button type="submit" class="btn btn-primary">
                 <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
                 <p th:text="#{ljubimci.spremi}" style="display: inline;"></p>
             </button>
         </form>
+        <a class="btn btn-danger float-right" th:href="@{/moji-ljubimci}" th:text="#{label.back}"></a>
         </div>
     </div>
 </div>
-<script>
-     $(function () {
-   var bindDatePicker = function() {
-		$(".date").datetimepicker({
-        format:'YYYY-MM-DD',
-			icons: {
-				time: "fa fa-clock-o",
-				date: "fa fa-calendar",
-				up: "fa fa-arrow-up",
-				down: "fa fa-arrow-down"
-			}
-		}).find('input:first').on("blur",function () {
-			// check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
-			// update the format if it's yyyy-mm-dd
-			var date = parseDate($(this).val());
-
-			if (! isValidDate(date)) {
-				//create date based on momentjs (we have that)
-				date = moment().format('YYYY-MM-DD');
-			}
-
-			$(this).val(date);
-		});
-	}
-   
-   var isValidDate = function(value, format) {
-		format = format || false;
-		// lets parse the date to the best of our knowledge
-		if (format) {
-			value = parseDate(value);
-		}
-
-		var timestamp = Date.parse(value);
-
-		return isNaN(timestamp) == false;
-   }
-   
-   var parseDate = function(value) {
-		var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
-		if (m)
-			value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
-
-		return value;
-   }
-   
-   bindDatePicker();
- });
-</script>
 </body>
 </html>

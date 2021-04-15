@@ -35,17 +35,16 @@
         </div>
         <div class="col">
             <br>
-            <h1>Dobrodošli!</h1>
-            <h2>Registracija uspješna, sljedeći korak je dodavanje profila Vašeg kućnog ljubimca.</h2>
+            <h1 th:text="#{welcome.msg}"></h1>
+            <h2 th:text="#{landing.poruka}"></h2>
             <a class="btn btn-primary" th:href="@{/novi-ljubimac}">
-                <img height="40px" th:src="@{/images/malaSapa.png}">
-                Dodaj ljubimca
+                <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{landing.gumb}">
             </a>
         </div>
     </div>
     <br>
     <br>
-    <h1>Dodavanjem ljubimca otvara Vam se mnoštvo opcija:</h1>
+    <h1 th:text="#{landing.poruka2}"></h1>
     <br>
     <br>
     <div class="row">
@@ -53,7 +52,7 @@
             <div class="card" style="width: 18rem;" th:class="box-bored-style">
                 <img class="card-img-top" th:src="@{/images/profil.png}" alt="profil_ljubimca">
                 <div class="card-body">
-                    <p class="card-text">Stvaranje profila koji sadrži sve njegove informacije</p>
+                    <p class="card-text" th:text="#{landing.cardProfil}"></p>
                 </div>
             </div>
         </div>
@@ -61,7 +60,7 @@
             <div class="card" style="width: 18rem;" th:class="box-bored-style">
                 <img class="card-img-top" th:src="@{/images/raspored.png}" alt="raspored_ljubimca">
                 <div class="card-body">
-                    <p class="card-text">Stvaranje rasporeda šetnji, prehrane, posjeta veterinaru...</p>
+                    <p class="card-text" th:text="#{landing.cardRaspored}"></p>
                 </div>
             </div>
         </div>
@@ -69,7 +68,7 @@
             <div class="card" style="width: 18rem;" th:class="box-bored-style">
                 <img class="card-img-top" th:src="@{/images/ljubimci.jpg}" alt="ljubimci">
                 <div class="card-body">
-                    <p class="card-text">Kontinuirano praćenje baš svakog Vašeg ljubimca</p>
+                    <p class="card-text" th:text="#{landing.cardLjubimci}"></p>
                 </div>
             </div>
         </div>

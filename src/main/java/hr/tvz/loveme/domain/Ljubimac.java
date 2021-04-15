@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,6 +30,8 @@ public class Ljubimac {
     private Integer id;
     @Column
     private String ime;
+    @ManyToOne
+    private Korisnik korisnik;
     @Column
     private String vrsta;
     @Column
