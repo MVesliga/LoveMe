@@ -35,32 +35,38 @@
         <form>
             <div class="mb-3">
               <label for="ime_ljubimci" class="form-label" th:text="#{ljubimci.ime}"></label>
-              <input type="text" class="form-control" id="ime_ljubimci">
+              <input type="text" class="form-control" id="imeLjubimci" name="imeLjubimci">
+              <!-- <div class="invalid-message" th:if="${#fields.hasErrors('imeLjubimci')}" th:errors="*{imeLjubimci}"></div> -->
             </div>
             <div class="mb-3">
               <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
-              <input type="text" class="form-control" id="vrsta_ljubimci">
+              <input type="text" class="form-control" id="vrstaLjubimci" name="vrstaLjubimci">
+              <!-- <div class="invalid-message" th:if="${#fields.hasErrors('vrsta_ljubimci')}" th:errors="*{vrsta_ljubimci}"></div> -->
             </div>
             <div class="mb-3">
               <label for="dob_ljubimci" class="form-label" th:text="#{ljubimci.dob}"></label>
-              <input type="number" class="form-control" id="dob_ljubimci">
+              <input type="number" class="form-control" id="dobLjubimci" name="dobLjubimci">
+              <!-- <div class="invalid-message" th:if="${#fields.hasErrors('dob_ljubimci')}" th:errors="*{dob_ljubimci}"></div> -->
             </div>
-            Datum kako?
+            <div class="mb-3">
+                <label for="veterinar" class="form-label" th:text="#{ljubimci.veterinar}"></label>
+                <input type="date" class="form-control" id="veterinar" name="veterinar">
+            </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="cijepljen">
+                <input type="checkbox" class="form-check-input" id="cijepljen" name="cijepljen">
                 <label class="form-check-label" for="cijepljen" th:text="#{ljubimci.cijepljen2}"></label>
             </div>
             <div class="mb-3">
                 <label for="obuka" class="form-label" th:text="#{ljubimci.obuka}"></label>
-                <input type="text" class="form-control" id="obuka">
+                <input type="text" class="form-control" id="obuka" name="obuka">
             </div>
             <div class="mb-3">
                 <label for="hrana" class="form-label" th:text="#{ljubimci.hrana}"></label>
-                <input type="text" class="form-control" id="hrana">
+                <input type="text" class="form-control" id="hrana" name="hrana">
             </div>
             <div class="mb-3">
                 <label for="igracka" class="form-label" th:text="#{ljubimci.igracka}"></label>
-                <input type="text" class="form-control" id="igracka">
+                <input type="text" class="form-control" id="igracka" name="igracka">
             </div>
             <button type="submit" class="btn btn-primary">
                 <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
