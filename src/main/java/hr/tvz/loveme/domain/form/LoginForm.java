@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class LoginForm {
     @NotBlank(message = "{loginForm.korisnickoIme.notBlank}")
-    private String korisnickoIme;
+    private String username;
     @NotBlank(message = "{loginForm.lozinka.notBlank}")
-    private String lozinka;
+    private String password;
 }
