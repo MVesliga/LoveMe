@@ -1,7 +1,6 @@
 package hr.tvz.loveme.controllers;
 
 import hr.tvz.loveme.domain.form.KorisnikForm;
-import hr.tvz.loveme.domain.Ljubimac;
 
 import java.util.ArrayList;
 import java.util.List;

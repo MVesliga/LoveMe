@@ -33,8 +33,7 @@
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
         <form  th:action="@{/novi-ljubimac}" th:object="${ljubimacForm}" method="POST">
-            <p th:Integer id = ((UserDetails)principal).getId();></p>
-            <input type="number" class="form-control" id="korisnik_id" name="korisnik_id" th:value="${id}">
+            <input type="hidden" class="form-control" id="korisnik_id" name="korisnik_id" th:value="">
             <div class="mb-3">
               <label for="ime_ljubimci" class="form-label" th:text="#{ljubimci.ime}"></label>
               <input type="text" class="form-control" id="imeLjubimci" name="imeLjubimci">

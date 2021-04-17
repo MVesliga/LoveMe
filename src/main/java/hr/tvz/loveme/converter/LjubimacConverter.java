@@ -3,7 +3,9 @@ package hr.tvz.loveme.converter;
 import hr.tvz.loveme.domain.Ljubimac;
 import hr.tvz.loveme.domain.form.LjubimacForm;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LjubimacConverter implements Converter<LjubimacForm, Ljubimac> {
 
     @Override
