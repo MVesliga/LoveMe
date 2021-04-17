@@ -22,10 +22,17 @@ public class KorisnikController {
         this.korisnikRepository = korisnikRepository;
     }
 
+    /**
+     * Metoda koja se poziva prilikom dohvacanja profila ulogiranog korisnika.
+     * @param model objekt pomocu kojeg se korisnicki objekt salje u html template
+     * @param principal objek pomocu kojeg se dohvacaju podaci trenutno ulogiranog korisnika
+     * @return stranica sa prikazom detalja korisnika
+     */
     @GetMapping("/profil")
     public String getProfil(Model model, Principal principal) {
         //TODO makmnuti kasnije
         List<Korisnik> listaKorisnika = korisnikRepository.findAll();
+        model.addAttribute("korisnik", korisnikRepository.findByKorisnickoIme(principal.getName()));
         System.out.println(principal.getName());
         System.out.println("tu sam!");
 
