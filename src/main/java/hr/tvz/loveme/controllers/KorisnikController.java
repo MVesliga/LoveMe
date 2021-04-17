@@ -30,11 +30,7 @@ public class KorisnikController {
      */
     @GetMapping("/profil")
     public String getProfil(Model model, Principal principal) {
-        //TODO makmnuti kasnije
-        List<Korisnik> listaKorisnika = korisnikRepository.findAll();
         model.addAttribute("korisnik", korisnikRepository.findByKorisnickoIme(principal.getName()));
-        System.out.println(principal.getName());
-        System.out.println("tu sam!");
 
         return "profil";
     }

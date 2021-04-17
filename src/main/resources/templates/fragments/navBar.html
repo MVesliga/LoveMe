@@ -1,7 +1,9 @@
 <!doctype html>
 <html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" th:href="@{/love-me}">Logo</a>
+    <a class="navbar-brand"
+       th:href="@{/love-me}"><img height="30px"
+                                                th:src="@{/images/homeAvatar.webp}"> <span th:text="#{nav.home}">Pocetna</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -10,17 +12,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/love-me/moji-ljubimci}"><img height="30px"
-                                                                             th:src="@{/images/petIcon.png}"> Moji
-                    ljubimci</a>
+                <a class="nav-link"
+                   th:href="@{/love-me/moji-ljubimci}"><img height="30px" th:src="@{/images/petIcon.png}">
+                        <span th:text="#{nav.pets}">Moji ljubimci</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/love-me/profil}"><img height="30px" th:src="@{/images/userIcon.png}">
-                    Moj profil</a>
+                    <span th:text="#{nav.profile}">Moj profil</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/love-me/forum}"><img height="30px" th:src="@{/images/forumIcon.png}">
-                    Forum</a>
+                    <span th:text="#{nav.forum}">Forum</span></a>
             </li>
         </ul>
 

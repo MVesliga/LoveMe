@@ -15,7 +15,6 @@ import javax.validation.constraints.NotBlank;
 @ToString
 @FieldsValueMatch(field = "lozinka", fieldMatch = "ponovljenaLozinka", message = "{registracijaForm.fieldsValueMatch.lozinka}")
 public class KorisnikForm {
-
     private Integer id;
     @NotBlank(message = "{registracijaForm.ime.notBlank}")
     private String ime;

@@ -17,6 +17,7 @@ public class KorisnikConverter implements Converter<KorisnikForm, Korisnik> {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
     @Override
     public Korisnik convert(KorisnikForm korisnikForm) {
         Korisnik korisnik = new Korisnik();
@@ -24,7 +25,7 @@ public class KorisnikConverter implements Converter<KorisnikForm, Korisnik> {
         korisnik.setPrezime(korisnikForm.getPrezime());
         try {
             if(korisnikForm.getDatumRodjenja() != null) {
-                korisnik.setDatumRodjenja(new SimpleDateFormat("yyyy-mm-dd").parse(korisnikForm.getDatumRodjenja()));
+                korisnik.setDatumRodjenja(new SimpleDateFormat("MM/dd/yyyy").parse(korisnikForm.getDatumRodjenja()));
             }
         } catch (ParseException e) {
             e.printStackTrace();

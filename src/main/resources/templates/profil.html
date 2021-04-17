@@ -6,7 +6,7 @@
 <br>
 <br>
 <div class="container">
-    <h1>Profil osobe</h1>
+    <h1 th:text="#{profil.title}">Profil osobe</h1>
 </div>
 <div class="container-fluid">
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
@@ -24,27 +24,11 @@
                 </div>
                 <div class="col-lg-8">
                     <p>
-                    <p>Korisnicko ime :
-                        <span th:text="${korisnik.korisnickoIme}" style="font-weight: bold"/>
-
-                    </p>
-                    <p>Ime :
-                        <span th:text="${korisnik.ime}" style="font-weight: bold"/>
-
-                    </p>
-                    <p> Prezime :
-                        <span th:text="${korisnik.prezime}" style="font-weight: bold"/>
-
-                    </p>
-                    <p> Email :
-                    <span th:text="${korisnik.email}" style="font-weight: bold"/>
-
-                </p>
-                    <p> Datum rodjena :
-                        <span th:text="${korisnik.datumRodjenja}" style="font-weight: bold"/>
-
-                    </p>
-
+                    <p><span th:text="#{profil.korisnickoIme}">Korisnicko ime</span>: <span th:text="${korisnik.korisnickoIme}" style="font-weight: bold"/></p>
+                    <p><span th:text="#{profil.ime}">Ime</span>: <span th:text="${korisnik.ime}" style="font-weight: bold"/></p>
+                    <p> <span th:text="#{profil.prezime}">Prezime</span>: <span th:text="${korisnik.prezime}" style="font-weight: bold"/></p>
+                    <p> <span th:text="#{profil.email}">Email</span>: <span th:text="${korisnik.email}" style="font-weight: bold"/></p>
+                    <p> <span th:text="#{profil.datumRodjenja}"></span>: <span th:text="${#dates.format(korisnik.datumRodjenja, 'dd.MM.yyyy')}" style="font-weight: bold"/></p>
                     </p>
                 </div>
             </div>

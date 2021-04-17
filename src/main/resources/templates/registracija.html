@@ -51,6 +51,16 @@
                          th:if="${#fields.hasErrors('ponovljenaLozinka')}"
                          th:errors="*{ponovljenaLozinka}">Ponovljena lozinka error</div>
                 </div>
+                <div class="form-group">
+                    <label for="datumRodjenja" th:text="#{registracijaForm.datumRodjenja}">Datum rodjenja</label>
+                    <div class='input-group date'>
+                        <input id="datumRodjenja" type='text' class="form-control" th:field="*{datumRodjenja}"/>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-calendar-week"></i></span>
+                        </div>
+               </span>
+                    </div>
+                </div>
                 <a class="btn btn-outline-info" th:text="#{label.back}" th:href="@{/}"></a>
                 <button type="submit" class="btn btn-outline-info float-right" th:text="#{label.submit}"></button>
             </form>
@@ -61,4 +71,11 @@
     </div>
 </div>
 </body>
+
+<script type="text/javascript">
+    $('.input-group.date').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
+</script>
 </html>
