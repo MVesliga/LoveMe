@@ -17,10 +17,6 @@
                         <img th:src="@{/images/covjekJure.jpg}" width="90%" height="90%" id="profilna">
                     </div>
                     <br>
-                    <button type="button" class="btn btn-primary">
-                        <img height="40px" th:src="@{/images/malaSapa.png}" />
-                        <p th:text="#{ljubimci.upload}" style="display: inline;" ></p>
-                    </button>
                 </div>
                 <div class="col-lg-8">
                     <p>
@@ -30,6 +26,7 @@
                     <p> <span th:text="#{profil.email}">Email</span>: <span th:text="${korisnik.email}" style="font-weight: bold"/></p>
                     <p> <span th:text="#{profil.datumRodjenja}"></span>: <span th:text="${#dates.format(korisnik.datumRodjenja, 'dd.MM.yyyy')}" style="font-weight: bold"/></p>
                     </p>
+                    <a class="btn btn-primary" th:href="@{/love-me/profil/update}" th:text="#{profil.uredi}">Uredi</a>
                 </div>
             </div>
         </div>

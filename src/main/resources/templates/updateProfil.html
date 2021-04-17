@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body th:style="'background:url('+ @{/images/indexWallpaper.jpg} +') no-repeat fixed center; background-size: 100% 100%;'">
+<nav th:replace="fragments/navBar"></nav>
+<br>
+<br>
+<div class="container">
+    <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
+        <div class="col-md-8 box-bored-style">
+            <h1 th:text="#{profil.update}">Update profil</h1>
+            <form th:action="@{/profil/update}" th:object="${korisnikForm}" method="POST">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="ime" th:text="#{registracijaForm.ime}">Ime</label>
+                        <input type="text" class="form-control" id="ime" th:field="*{ime}">
+                        <div class="invalid-message"
+                             th:if="${#fields.hasErrors('ime')}"
+                             th:errors="*{ime}">Ime error
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="prezime" th:text="#{registracijaForm.prezime}">Prezime</label>
+                        <input type="text" class="form-control" id="prezime" th:field="*{prezime}">
+                        <div class="invalid-message"
+                             th:if="${#fields.hasErrors('prezime')}"
+                             th:errors="*{prezime}">Prezime error
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="korisnickoIme" th:text="#{registracijaForm.korisnickoIme}">Korisničko ime</label>
+                    <input type="text" class="form-control" id="korisnickoIme" th:field="*{korisnickoIme}">
+                    <div class="invalid-message"
+                         th:if="${#fields.hasErrors('korisnickoIme')}"
+                         th:errors="*{korisnickoIme}">Korisnicko ime error
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" th:text="#{registracijaForm.email}">Email</label>
+                    <input type="email" class="form-control" id="email" th:field="*{email}">
+                    <div class="invalid-message"
+                         th:if="${#fields.hasErrors('email')}"
+                         th:errors="*{email}">Email error
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="datumRodjenja" th:text="#{registracijaForm.datumRodjenja}">Datum rodjenja</label>
+                    <div class='input-group date'>
+                        <input id="datumRodjenja" type='text' class="form-control" th:field="*{datumRodjenja}"/>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-calendar-week"></i></span>
+                        </div>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-info float-right" th:text="#{label.submit}"></button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    $('.input-group.date').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
+</script>
+</html>

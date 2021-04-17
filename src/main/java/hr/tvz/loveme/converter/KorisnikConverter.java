@@ -35,4 +35,18 @@ public class KorisnikConverter implements Converter<KorisnikForm, Korisnik> {
         korisnik.setLozinka(passwordEncoder.encode(korisnikForm.getLozinka()));
         return korisnik;
     }
+
+    public KorisnikForm convertToForm(Korisnik korisnik) {
+        KorisnikForm korisnikForm = new KorisnikForm();
+        korisnikForm.setId(korisnik.getId());
+        korisnikForm.setIme(korisnik.getIme());
+        korisnikForm.setPrezime(korisnik.getPrezime());
+        korisnikForm.setKorisnickoIme(korisnik.getKorisnickoIme());
+        korisnikForm.setEmail(korisnik.getEmail());
+        if(korisnik.getDatumRodjenja() != null) {
+            korisnikForm.setDatumRodjenja(new SimpleDateFormat("MM/dd/yyyy").format(korisnik.getDatumRodjenja()));
+        }
+
+        return korisnikForm;
+    }
 }

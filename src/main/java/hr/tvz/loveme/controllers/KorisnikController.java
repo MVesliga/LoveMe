@@ -1,6 +1,9 @@
 package hr.tvz.loveme.controllers;
 
+import hr.tvz.loveme.converter.KorisnikConverter;
 import hr.tvz.loveme.domain.Korisnik;
+import hr.tvz.loveme.domain.form.KorisnikForm;
+import hr.tvz.loveme.facade.KorisnikFacade;
 import hr.tvz.loveme.repository.KorisnikRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,10 +19,13 @@ import java.util.List;
 @RequestMapping("/love-me")
 public class KorisnikController {
 
-    private KorisnikRepository korisnikRepository;
+    private KorisnikFacade korisnikFacade;
+    private KorisnikConverter korisnikConverter;
 
-    public KorisnikController(KorisnikRepository korisnikRepository) {
-        this.korisnikRepository = korisnikRepository;
+    public KorisnikController(KorisnikFacade korisnikFacade,
+                              KorisnikConverter korisnikConverter) {
+        this.korisnikFacade = korisnikFacade;
+        this.korisnikConverter = korisnikConverter;
     }
 
     /**
@@ -30,8 +36,19 @@ public class KorisnikController {
      */
     @GetMapping("/profil")
     public String getProfil(Model model, Principal principal) {
-        model.addAttribute("korisnik", korisnikRepository.findByKorisnickoIme(principal.getName()));
+        model.addAttribute("korisnik", korisnikFacade.getKorisnikRepository().findByKorisnickoIme(principal.getName()));
 
         return "profil";
+    }
+
+    @GetMapping("/profil/update")
+    public String getUpdateProfil(Model model, Principal principal) {
+        Korisnik korisnik = korisnikFacade.getKorisnikRepository().findByKorisnickoIme(principal.getName());
+
+        KorisnikForm korisnikForm = korisnikConverter.convertToForm(korisnik);
+
+        model.addAttribute("korisnikForm", korisnikForm);
+
+        return "updateProfil";
     }
 }
