@@ -8,6 +8,49 @@
 <div class="container">
     <h1>Profil osobe</h1>
 </div>
+<div class="container-fluid">
+    <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
+        <div class="col-md-8 box-bored-style">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div>
+                        <img src="../static/images/pas-profilna.jpeg" th:src="@{images/covjekJure.jpg}" width="90%" height="90%" id="profilna">
+                    </div>
+                    <br>
+                    <button type="button" class="btn btn-primary">
+                        <img height="40px"  src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}" />
+                        <p th:text="#{ljubimci.upload}" style="display: inline;" ></p>
+                    </button>
+                </div>
+                <div class="col-lg-8">
+                    <p>
+                    <p>Korisnicko ime :
+                        <span th:text="${korisnik.korisnickoIme}" style="font-weight: bold"/>
+
+                    </p>
+                    <p>Ime :
+                        <span th:text="${korisnik.ime}" style="font-weight: bold"/>
+
+                    </p>
+                    <p> Prezime :
+                        <span th:text="${korisnik.prezime}" style="font-weight: bold"/>
+
+                    </p>
+                    <p> Email :
+                    <span th:text="${korisnik.email}" style="font-weight: bold"/>
+
+                </p>
+                    <p> Datum rodjena :
+                        <span th:text="${korisnik.datumRodjenja}" style="font-weight: bold"/>
+
+                    </p>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Optional JavaScript; choose one of the two! -->
 <!-- Option 1: Bootstrap Bundle with Popper -->
