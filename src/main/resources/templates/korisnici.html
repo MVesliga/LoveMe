@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>lista korisnika</h1>
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body th:style="'background:url('+ @{/images/indexWallpaper.jpg} +') no-repeat fixed center; background-size: 100% 100%;'">
+<nav th:replace="fragments/navBar"></nav>
+<br>
+<br>
+<div class="container">
+    <div th:if="${deleteKorisnikSuccess}" class="alert alert-info">
+        <p class="text-center" th:text="#{korisnici.deleteKorisnikSuccess}">Korisnik je uspjesno obrisan!</p>
+    </div>
+    <h1>Korisnici view</h1>
+    <table class="table table-bordered table-striped" style="background-color: white;">
+        <thead class="thead-dark">
+        <tr>
+            <td>Email</td>
+            <td>Korisnicko ime</td>
+            <td>Ime</td>
+            <td>Prezime</td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="korisnik : ${listaKorisnika}">
+            <td th:text="${korisnik.email}">Email</td>
+            <td th:text="${korisnik.korisnickoIme}">Korisnicko ime</td>
+            <td th:text="${korisnik.ime}">Ime</td>
+            <td th:text="${korisnik.prezime}">Prezime</td>
+            <td><a class="btn btn-danger" th:href="@{/love-me/delete/korisnik(korisnikId=${korisnik.id})}" th:text="#{label.delete}">Obrisi</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
