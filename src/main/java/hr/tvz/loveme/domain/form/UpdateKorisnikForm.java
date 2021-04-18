@@ -1,6 +1,5 @@
 package hr.tvz.loveme.domain.form;
 
-import hr.tvz.loveme.validator.FieldsValueMatch;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,8 +12,8 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @NoArgsConstructor
 @ToString
-@FieldsValueMatch(field = "lozinka", fieldMatch = "ponovljenaLozinka", message = "{registracijaForm.fieldsValueMatch.lozinka}")
-public class KorisnikForm {
+public class UpdateKorisnikForm {
+
     private Integer id;
     @NotBlank(message = "{registracijaForm.ime.notBlank}")
     private String ime;
@@ -26,8 +25,4 @@ public class KorisnikForm {
     @NotBlank(message = "{registracijaForm.email.notBlank}")
     @Email(message = "{registracijaForm.email.format}")
     private String email;
-    @NotBlank(message = "{registracijaForm.lozinka.notBlank}")
-    private String lozinka;
-    @NotBlank(message = "{registracijaForm.ponovljenaLozinka.notBlank}")
-    private String ponovljenaLozinka;
 }

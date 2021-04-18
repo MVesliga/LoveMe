@@ -4,9 +4,9 @@ CREATE TABLE IF NOT EXISTS korisnik (
   prezime VARCHAR(45) NOT NULL,
   datum_rodjenja DATE NULL,
   email VARCHAR(45) NOT NULL,
-  korisnicko_ime VARCHAR(45) NULL,
-  lozinka VARCHAR(45) NULL,
-  isAdmin VARCHAR(1) NULL
+  korisnicko_ime VARCHAR(45) UNIQUE NULL,
+  lozinka VARCHAR(255) NULL,
+  enabled TINYINT NOT NULL DEFAULT 1
   );
 
 CREATE TABLE IF NOT EXISTS ljubimac (
@@ -20,10 +20,12 @@ CREATE TABLE IF NOT EXISTS ljubimac (
   obuka VARCHAR(100) NULL,
   hrana VARCHAR(100) NULL,
   igracka VARCHAR(100) NULL
-  -- CONSTRAINT 'veza' FOREIGN KEY ('korisnik_id') REFERENCES 'korisnik' ('id')
+  FOREIGN KEY (id_korisnik) REFERENCES korisnik (id),
   );
 
-CREATE TABLE IF NOT EXISTS vrsta (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  kategorija VARCHAR(45) NOT NULL
-  );
+CREATE TABLE IF NOT EXISTS korisnik_uloga (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    korisnicko_ime varchar(45) NOT NULL,
+    uloga VARCHAR(45) NOT NULL,
+    FOREIGN KEY (korisnicko_ime) REFERENCES korisnik (korisnicko_ime)
+);

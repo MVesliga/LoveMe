@@ -2,73 +2,34 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head th:replace="fragments/head"></head>
 <body th:style="'background:url('+ @{/images/indexWallpaper.jpg} +') no-repeat fixed center; background-size: 100% 100%;'">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Logo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{/moji-ljubimci}"><img height="30px" th:src="@{/images/petIcon.png}"> Moji ljubimci</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/profil}"><img height="30px" th:src="@{/images/userIcon.png}"> Moj profil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/forum}"><img height="30px" th:src="@{/images/forumIcon.png}"> Forum</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/}"><b>Logout</b></a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<nav th:replace="fragments/navBar"></nav>
 <br>
 <br>
 <div class="container">
-    <h1>Profil osobe</h1>
+    <h1 th:text="#{profil.title}">Profil osobe</h1>
 </div>
 <div class="container-fluid">
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
+            <div th:if="${updateProfilSuccess}" class="alert alert-info">
+                <p class="text-center" th:text="#{profil.updateProfilSuccess}">Uspjesno ste izmjenili korisnicke podatke!</p>
+            </div>
             <div class="row">
                 <div class="col-lg-4">
                     <div>
-                        <img src="../static/images/pas-profilna.jpeg" th:src="@{images/covjekJure.jpg}" width="90%" height="90%" id="profilna">
+                        <img th:src="@{/images/covjekJure.jpg}" width="90%" height="90%" id="profilna">
                     </div>
                     <br>
-                    <button type="button" class="btn btn-primary">
-                        <img height="40px"  src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}" />
-                        <p th:text="#{ljubimci.upload}" style="display: inline;" ></p>
-                    </button>
                 </div>
                 <div class="col-lg-8">
                     <p>
-                    <p>Korisnicko ime :
-                        <span th:text="${korisnik.korisnickoIme}" style="font-weight: bold"/>
-
+                    <p><span th:text="#{profil.korisnickoIme}">Korisnicko ime</span>: <span th:text="${korisnik.korisnickoIme}" style="font-weight: bold"/></p>
+                    <p><span th:text="#{profil.ime}">Ime</span>: <span th:text="${korisnik.ime}" style="font-weight: bold"/></p>
+                    <p> <span th:text="#{profil.prezime}">Prezime</span>: <span th:text="${korisnik.prezime}" style="font-weight: bold"/></p>
+                    <p> <span th:text="#{profil.email}">Email</span>: <span th:text="${korisnik.email}" style="font-weight: bold"/></p>
+                    <p> <span th:text="#{profil.datumRodjenja}"></span>: <span th:text="${#dates.format(korisnik.datumRodjenja, 'dd.MM.yyyy')}" style="font-weight: bold"/></p>
                     </p>
-                    <p>Ime :
-                        <span th:text="${korisnik.ime}" style="font-weight: bold"/>
-
-                    </p>
-                    <p> Prezime :
-                        <span th:text="${korisnik.prezime}" style="font-weight: bold"/>
-
-                    </p>
-                    <p> Email :
-                    <span th:text="${korisnik.email}" style="font-weight: bold"/>
-
-                </p>
-                    <p> Datum rodjena :
-                        <span th:text="${korisnik.datumRodjenja}" style="font-weight: bold"/>
-
-                    </p>
-
-                    </p>
+                    <a class="btn btn-primary" th:href="@{/love-me/profil/update}" th:text="#{profil.uredi}">Uredi</a>
                 </div>
             </div>
         </div>
