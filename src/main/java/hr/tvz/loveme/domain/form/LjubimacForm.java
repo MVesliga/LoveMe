@@ -8,6 +8,9 @@ import lombok.ToString;
 import java.sql.Date;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import hr.tvz.loveme.domain.Korisnik;
 
 @Getter
 @Setter
@@ -16,12 +19,13 @@ import javax.validation.constraints.NotBlank;
 public class LjubimacForm {
 
     private Integer id;
-    private String ime;
+    private Korisnik korisnik;
     @NotBlank(message = "{registracijaForm.imeLjubimca.notBlank}")
-    private String vrsta;
+    private String ime;
     @NotBlank(message = "{registracijaForm.vrstaLjubimca.notBlank}")
+    private String vrsta;
+    @NotNull(message = "{registracijaForm.dobLjubimca.notBlank}")
     private Integer dob;
-    @NotBlank(message = "{registracijaForm.dobLjubimca.notBlank}")
     private Date veterinar;
     private String hrana;
     private String igracka;

@@ -33,6 +33,7 @@
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
         <form>
+            <input type="hidden" id="id" th:value="${ljubimac.id}">
             <div class="mb-3">
               <label for="ime_ljubimci" class="form-label" th:text="#{ljubimci.ime}"></label>
               <input type="text" class="form-control" id="ime_ljubimci" th:value="${ljubimac.ime}">

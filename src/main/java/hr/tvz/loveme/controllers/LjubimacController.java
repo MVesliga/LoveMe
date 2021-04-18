@@ -1,9 +1,11 @@
 package hr.tvz.loveme.controllers;
 
+import hr.tvz.loveme.converter.LjubimacConverter;
 import hr.tvz.loveme.domain.Ljubimac;
 import hr.tvz.loveme.domain.form.LjubimacForm;
+import hr.tvz.loveme.domain.form.UpdateLjubimacForm;
 import hr.tvz.loveme.facade.LjubimacFacade;
-import hr.tvz.loveme.repository.LjubimacRepository;
+import hr.tvz.loveme.facade.KorisnikFacade;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -55,7 +58,8 @@ public class LjubimacController {
     @PostMapping("/novi-ljubimac")
     public String addLjubimac(@ModelAttribute @Valid LjubimacForm ljubimacForm,
                                     BindingResult bindingResult,
-                                    RedirectAttributes redirectAttributes) {
+                                    RedirectAttributes redirectAttributes,
+                                    Principal principal) {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.ljubimacForm", bindingResult);
@@ -63,6 +67,8 @@ public class LjubimacController {
 
             return "redirect:/moji_ljubimci";
         }
+
+        ljubimacForm.setKorisnik(korisnikFacade.getKorisnikRepository().findByName(principal.getName()).get());
 
         ljubimacFacade.create(ljubimacForm);
 
@@ -75,5 +81,24 @@ public class LjubimacController {
 
         model.addAttribute("ljubimac", ljubimac);
         return "uredi_ljubimca";
+    }
+
+    @PostMapping("/uredi-ljubimca")
+    public String editLjubimac(@ModelAttribute @Valid UpdateLjubimacForm updateLjubimacForm,
+                                    BindingResult bindingResult,
+                                    RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.ljubimacForm", bindingResult);
+            redirectAttributes.addFlashAttribute("ljubimacForm", updateLjubimacForm);
+
+            return "redirect:/moji_ljubimci";
+        }
+        Ljubimac ljubimac = ljubimacFacade.getLjubimacRepository().findById(updateLjubimacForm.getId()).get();
+
+        Ljubimac editedLjubimac = LjubimacConverter.convertUpdateLjubimacForm(updateLjubimacForm, ljubimac);
+        ljubimacFacade.getLjubimacRepository().save(editedLjubimac);
+
+        return "redirect:/moji_ljubimci";
     }
 }
