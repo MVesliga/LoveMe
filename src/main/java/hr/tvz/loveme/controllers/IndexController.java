@@ -29,11 +29,20 @@ public class IndexController {
         this.korisnikFacade = korisnikFacade;
     }
 
+    /**
+     * Metoda koja služi za dohvaćanje početne stranice.
+     * @return
+     */
     @GetMapping
     public String getIndexPage() {
         return "index";
     }
 
+    /**
+     * Metoda koja služi za dohvaćanje forme za registraciju korisnika.
+     * @param model objekt preko kojeg u html stranicu šaljemo formu za popunjavanje podataka o korisniku.
+     * @return html stranica sa formom za registraciju
+     */
     @GetMapping("/registracija")
     public String getKorisnikRegistracijaForm(Model model) {
         if (!model.containsAttribute("korisnikForm")) {
@@ -43,6 +52,17 @@ public class IndexController {
         return "registracija";
     }
 
+
+    /**
+     * Metoda koja se poziva nakon što se klikne gumb za predaju forme za registraciju.
+     * Provjerava da li postoje validacijske greške te ukoliko postoje ponovno se preusmjeri korisnika na ekran za popunjavanje forme
+     * sa prikladnim porukama o greškama.
+     * Ako su svi podaci validni postavlja se korisnička uloga te se korisnik sprema u bazu.
+     * @param korisnikForm objekt koji predstavlja korisničku formu
+     * @param bindingResult objekt na koji se mapiraju validacijske greške
+     * @param redirectAttributes objekt pomoću kojeg šaljemo podatke u zahtjevu za preusmjeravanje
+     * @return forma za registraciju u slučaju greške, stranica za prijavu u slučaju uspješne registracije.
+     */
     @PostMapping("/registracija")
     public String registerKokrisnik(@ModelAttribute @Valid KorisnikForm korisnikForm,
                                     BindingResult bindingResult,
@@ -64,7 +84,8 @@ public class IndexController {
         korisnikFacade.create(korisnikForm);
         korisnikFacade.getKorisnikUlogaRepository().save(korisnikUloga);
 
-        return "redirect:/";
+        redirectAttributes.addFlashAttribute("registerSuccess", true);
+        return "redirect:/prijava";
     }
 
     @GetMapping("/prijava")

@@ -5,6 +5,9 @@
 <div class="container">
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
+            <div th:if="${registerSuccess}" class="alert alert-info">
+                <p class="text-center" th:text="#{login.registerSuccess}">Uspjesna registracija!</p>
+            </div>
             <h1 th:text="#{label.login}">Login</h1>
             <form th:object="${loginForm}" th:action="@{/prijava}" method="post">
                 <div class="form-group">
@@ -24,6 +27,8 @@
                 <a class="btn btn-outline-info" th:text="#{label.back}" th:href="@{/}"></a>
                 <button type="submit" class="btn btn-outline-info float-right" th:text="#{label.submit}"></button>
             </form>
+            <hr />
+            <p class="text-center"><span th:text="#{msg.register}"></span> <a th:href="@{/registracija}" th:text="#{label.register}"></a></p>
         </div>
     </div>
 </div>
