@@ -1,82 +1,52 @@
 <!doctype html>
 <html xmlns:th="https://www.thymeleaf.org">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
-    <title>Dobrodošli</title>
-
-    <link th:href="@{/style.css}" rel="stylesheet" />
-</head>
+<head th:replace="fragments/head"></head>
 <body th:style="'background:url('+ @{/images/indexWallpaper.jpg} +') no-repeat fixed center; background-size: 100% 100%;'">
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-        <a class="navbar-brand" href="#">Logo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/moji-ljubimci}"><img height="30px" th:src="@{/images/petIcon.png}"> Moji ljubimci</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/profil}"><img height="30px" th:src="@{/images/userIcon.png}"> Moj profil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/forum}"><img height="30px" th:src="@{/images/forumIcon.png}"> Forum</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}"><b>Logout</b></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <br>
-    <br>
-    <div class="container-fluid">
-        <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
-            <div class="col-md-8 box-bored-style">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div>
-                        <img src="../static/images/pas-profilna.jpeg" th:src="@{images/pas-profilna.jpeg}" width="90%" height="90%" id="profilna">
-                        </div>
-                        <br>
-                        <button type="button" class="btn btn-primary">
-                            <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
-                            <p th:text="#{ljubimci.upload}" style="display: inline;"></p>
-                        </button>
+<nav th:replace="fragments/navBar"></nav>
+<br>
+<br>
+<div class="container-fluid">
+    <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
+        <div class="col-md-8 box-bored-style">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div>
+                        <img th:src="@{/images/pas-profilna.jpeg}" width="90%"
+                             height="90%" id="profilna">
                     </div>
-                    <div class="col-lg-8">
-                        <p>
-                            <p th:text="#{ljubimci.vrsta}"></p>
-                            <p th:text="#{ljubimci.ime}"></p>
-                            <p th:text="#{ljubimci.dob}"></p>
-                            <p th:text="#{ljubimci.veterinar}"></p>
-                            <p th:text="#{ljubimci.cijepljen}"></p>
-                            <p th:text="#{ljubimci.obuka}"></p>
-                            <p th:text="#{ljubimci.hrana}"></p>
-                            <p th:text="#{ljubimci.igracka}"></p>
-                        </p>
-                    </div>
+                    <br>
+                    <button type="button" class="btn btn-primary">
+                        <img height="40px" th:src="@{/images/malaSapa.png}"/>
+                        <p th:text="#{ljubimci.upload}" style="display: inline;"></p>
+                    </button>
+                </div>
+                <div class="col-lg-8">
+                    <p>
+                    <p th:text="#{ljubimci.vrsta}"></p>
+                    <p th:text="#{ljubimci.ime}"></p>
+                    <p th:text="#{ljubimci.dob}"></p>
+                    <p th:text="#{ljubimci.veterinar}"></p>
+                    <p th:text="#{ljubimci.cijepljen}"></p>
+                    <p th:text="#{ljubimci.obuka}"></p>
+                    <p th:text="#{ljubimci.hrana}"></p>
+                    <p th:text="#{ljubimci.igracka}"></p>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<!-- Optional JavaScript; choose one of the two! -->
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    -->
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+-->
 </body>
 </html>

@@ -5,25 +5,30 @@
 <div class="container">
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
+            <div th:if="${registerSuccess}" class="alert alert-info">
+                <p class="text-center" th:text="#{login.registerSuccess}">Uspjesna registracija!</p>
+            </div>
             <h1 th:text="#{label.login}">Login</h1>
             <form th:object="${loginForm}" th:action="@{/prijava}" method="post">
                 <div class="form-group">
-                    <label for="korisnickoIme" th:text="#{loginForm.korisnickoIme}">Korisničko ime</label>
-                    <input type="text" class="form-control" id="korisnickoIme" th:field="*{korisnickoIme}"/>
+                    <label for="username" th:text="#{loginForm.korisnickoIme}">Korisničko ime</label>
+                    <input type="text" class="form-control" id="username" th:field="*{username}"/>
                     <div class="invalid-message"
-                         th:if="${#fields.hasErrors('korisnickoIme')}"
-                         th:errors="*{korisnickoIme}">Ime error</div>
+                         th:if="${#fields.hasErrors('username')}"
+                         th:errors="*{username}">Ime error</div>
                 </div>
                 <div class="form-group">
-                    <label for="lozinka" th:text="#{loginForm.lozinka}">Lozinka</label>
-                    <input type="password" class="form-control" id="lozinka" th:field="*{lozinka}"/>
+                    <label for="password" th:text="#{loginForm.lozinka}">Lozinka</label>
+                    <input type="password" class="form-control" id="password" th:field="*{password}"/>
                     <div class="invalid-message"
-                         th:if="${#fields.hasErrors('lozinka')}"
-                         th:errors="*{lozinka}">Ime error</div>
+                         th:if="${#fields.hasErrors('password')}"
+                         th:errors="*{password}">Ime error</div>
                 </div>
                 <a class="btn btn-outline-info" th:text="#{label.back}" th:href="@{/}"></a>
                 <button type="submit" class="btn btn-outline-info float-right" th:text="#{label.submit}"></button>
             </form>
+            <hr />
+            <p class="text-center"><span th:text="#{msg.register}"></span> <a th:href="@{/registracija}" th:text="#{label.register}"></a></p>
         </div>
     </div>
 </div>

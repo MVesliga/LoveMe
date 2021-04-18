@@ -1,0 +1,69 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand"
+       th:href="@{/love-me}"><img height="30px"
+                                                th:src="@{/images/homeAvatar.webp}"> <span th:text="#{nav.home}">Pocetna</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link"
+                   th:href="@{/love-me/moji-ljubimci}"><img height="30px" th:src="@{/images/petIcon.png}">
+                        <span th:text="#{nav.pets}">Moji ljubimci</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/love-me/profil}"><img height="30px" th:src="@{/images/userIcon.png}">
+                    <span th:text="#{nav.profile}">Moj profil</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/love-me/forum}"><img height="30px" th:src="@{/images/forumIcon.png}">
+                    <span th:text="#{nav.forum}">Forum</span></a>
+            </li>
+        </ul>
+
+        <div class="form-check form-check-inline border-right">
+            <input class="form-check-input radio-nav" id="hrRadio" name="radio"
+                   value="hr" type="radio">
+            <label class="form-check-label mr-2" for="hrRadio">Hr</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input radio-nav" name="radio"
+                   id="enRadio" value="en">
+            <label class="form-check-label " for="enRadio">En</label>
+        </div>
+
+        <div sec:authorize="isAuthenticated()">
+            <div style="padding: 2px;" class="border-left border-right">
+                <span th:text="#{nav.loggedInAs}"></span> <span sec:authentication="name" style="font-weight: bold;"></span>
+            </div>
+        </div>
+        <div class="nav-item" sec:authorize="isAuthenticated()">
+            <a th:href="@{/logout}" class="btn btn-danger" th:text="#{nav.logout}" style="margin-left: 5px;">Odjava</a>
+        </div>
+    </div>
+</nav>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".radio-nav").on('click', function (event) {
+            var selectedOption = $(this).val();
+            localStorage.setItem('locale', selectedOption);
+            var currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set("lang", selectedOption);
+            window.location.replace(currentUrl);
+        });
+
+        var localeValue = localStorage.getItem('locale');
+        if ("en" == localeValue) {
+            document.getElementById("enRadio").checked = true;
+        } else if ("hr" == localeValue) {
+            document.getElementById("hrRadio").checked = true;
+        }
+    })
+</script>
+</html>
