@@ -11,6 +11,9 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
+            <div th:if="${updateProfilSuccess}" class="alert alert-info">
+                <p class="text-center" th:text="#{profil.updateProfilSuccess}">Uspjesno ste izmjenili korisnicke podatke!</p>
+            </div>
             <div class="row">
                 <div class="col-lg-4">
                     <div>

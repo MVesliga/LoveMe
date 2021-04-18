@@ -2,6 +2,7 @@ package hr.tvz.loveme.converter;
 
 import hr.tvz.loveme.domain.Korisnik;
 import hr.tvz.loveme.domain.form.KorisnikForm;
+import hr.tvz.loveme.domain.form.UpdateKorisnikForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,7 +17,6 @@ public class KorisnikConverter implements Converter<KorisnikForm, Korisnik> {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
 
     @Override
     public Korisnik convert(KorisnikForm korisnikForm) {
@@ -33,20 +33,36 @@ public class KorisnikConverter implements Converter<KorisnikForm, Korisnik> {
         korisnik.setEmail(korisnikForm.getEmail());
         korisnik.setKorisnickoIme(korisnikForm.getKorisnickoIme());
         korisnik.setLozinka(passwordEncoder.encode(korisnikForm.getLozinka()));
+
         return korisnik;
     }
 
-    public KorisnikForm convertToForm(Korisnik korisnik) {
-        KorisnikForm korisnikForm = new KorisnikForm();
-        korisnikForm.setId(korisnik.getId());
-        korisnikForm.setIme(korisnik.getIme());
-        korisnikForm.setPrezime(korisnik.getPrezime());
-        korisnikForm.setKorisnickoIme(korisnik.getKorisnickoIme());
-        korisnikForm.setEmail(korisnik.getEmail());
+    public Korisnik convertUpdateKorisnikForm(UpdateKorisnikForm updateKorisnikForm, Korisnik updatedKorisnik) {
+        updatedKorisnik.setIme(updateKorisnikForm.getIme());
+        updatedKorisnik.setPrezime(updateKorisnikForm.getPrezime());
+        try {
+            if(updateKorisnikForm.getDatumRodjenja() != null) {
+                updatedKorisnik.setDatumRodjenja(new SimpleDateFormat("MM/dd/yyyy").parse(updateKorisnikForm.getDatumRodjenja()));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        updatedKorisnik.setEmail(updateKorisnikForm.getEmail());
+
+        return updatedKorisnik;
+    }
+
+    public UpdateKorisnikForm convertToForm(Korisnik korisnik) {
+        UpdateKorisnikForm updateKorisnikForm = new UpdateKorisnikForm();
+        updateKorisnikForm.setId(korisnik.getId());
+        updateKorisnikForm.setIme(korisnik.getIme());
+        updateKorisnikForm.setPrezime(korisnik.getPrezime());
+        updateKorisnikForm.setKorisnickoIme(korisnik.getKorisnickoIme());
+        updateKorisnikForm.setEmail(korisnik.getEmail());
         if(korisnik.getDatumRodjenja() != null) {
-            korisnikForm.setDatumRodjenja(new SimpleDateFormat("MM/dd/yyyy").format(korisnik.getDatumRodjenja()));
+            updateKorisnikForm.setDatumRodjenja(new SimpleDateFormat("MM/dd/yyyy").format(korisnik.getDatumRodjenja()));
         }
 
-        return korisnikForm;
+        return updateKorisnikForm;
     }
 }

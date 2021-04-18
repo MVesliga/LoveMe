@@ -9,7 +9,7 @@
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
             <h1 th:text="#{profil.update}">Update profil</h1>
-            <form th:action="@{/profil/update}" th:object="${korisnikForm}" method="POST">
+            <form th:action="@{/love-me/profil/update}" th:object="${updateKorisnikForm}" method="POST">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="ime" th:text="#{registracijaForm.ime}">Ime</label>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label for="korisnickoIme" th:text="#{registracijaForm.korisnickoIme}">Korisničko ime</label>
-                    <input type="text" class="form-control" id="korisnickoIme" th:field="*{korisnickoIme}">
+                    <input type="text" class="form-control" id="korisnickoIme" th:field="*{korisnickoIme}" th:readonly="true">
                     <div class="invalid-message"
                          th:if="${#fields.hasErrors('korisnickoIme')}"
                          th:errors="*{korisnickoIme}">Korisnicko ime error
