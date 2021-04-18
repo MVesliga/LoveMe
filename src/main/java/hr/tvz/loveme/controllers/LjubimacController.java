@@ -27,6 +27,7 @@ import javax.validation.Valid;
 public class LjubimacController {
 
     private LjubimacFacade ljubimacFacade;
+    private KorisnikFacade korisnikFacade;
 
     public LjubimacController(LjubimacFacade ljubimacFacade) {
         this.ljubimacFacade = ljubimacFacade;
@@ -70,7 +71,7 @@ public class LjubimacController {
             return "redirect:/moji_ljubimci";
         }
 
-        ljubimacForm.setKorisnik(korisnikFacade.getKorisnikRepository().findByName(principal.getName()).get());
+        ljubimacForm.setKorisnik(korisnikFacade.getKorisnikRepository().findByKorisnickoIme(principal.getName()));
 
         ljubimacFacade.create(ljubimacForm);
 

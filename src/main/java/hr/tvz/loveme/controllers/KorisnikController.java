@@ -2,16 +2,11 @@ package hr.tvz.loveme.controllers;
 
 import hr.tvz.loveme.converter.KorisnikConverter;
 import hr.tvz.loveme.domain.Korisnik;
-import hr.tvz.loveme.domain.form.KorisnikForm;
 import hr.tvz.loveme.domain.form.UpdateKorisnikForm;
 import hr.tvz.loveme.facade.KorisnikFacade;
-import hr.tvz.loveme.repository.KorisnikRepository;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 @RequestMapping("/love-me")

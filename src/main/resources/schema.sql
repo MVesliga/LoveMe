@@ -19,13 +19,13 @@ CREATE TABLE IF NOT EXISTS ljubimac (
   cijepljen VARCHAR(2) NULL,
   obuka VARCHAR(100) NULL,
   hrana VARCHAR(100) NULL,
-  igracka VARCHAR(100) NULL
-  FOREIGN KEY (id_korisnik) REFERENCES korisnik (id),
+  igracka VARCHAR(100) NULL,
+  FOREIGN KEY (korisnik_id) REFERENCES korisnik (id)
   );
 
 CREATE TABLE IF NOT EXISTS korisnik_uloga (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    korisnicko_ime varchar(45) NOT NULL,
-    uloga VARCHAR(45) NOT NULL,
-    FOREIGN KEY (korisnicko_ime) REFERENCES korisnik (korisnicko_ime)
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  korisnicko_ime varchar(45) NOT NULL,
+  uloga VARCHAR(45) NOT NULL,
+  FOREIGN KEY (korisnicko_ime) REFERENCES korisnik (korisnicko_ime)
 );

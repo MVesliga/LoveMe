@@ -5,7 +5,6 @@ import hr.tvz.loveme.domain.form.KorisnikForm;
 import hr.tvz.loveme.domain.form.UpdateKorisnikForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 

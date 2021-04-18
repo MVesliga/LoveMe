@@ -1,7 +1,6 @@
 package hr.tvz.loveme.repository;
 
 import hr.tvz.loveme.domain.Korisnik;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
