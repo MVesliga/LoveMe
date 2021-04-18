@@ -35,11 +35,19 @@ public class LjubimacController {
         return "moji_ljubimci";
     } */
 
+    /**
+     * Metoda koja služi za dohvaćanje ljubimaca.
+     * @return
+     */
     @GetMapping("/ljubimac")
     public String ljubimac(){
         return "ljubimac";
     }
 
+    /**
+     * Metoda koja služi za dohvaćanje forme za dodavanje novog ljubimca.
+     * @return
+     */
     @GetMapping("/novi-ljubimac")
     public String novi_ljubimac(){
         return "novi_ljubimac";
