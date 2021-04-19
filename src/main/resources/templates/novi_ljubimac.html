@@ -12,57 +12,57 @@
         <div class="col-md-8 box-bored-style">
         <form  th:action="@{/love-me/novi-ljubimac}" th:object="${ljubimacForm}" method="POST">
             <div class="mb-3">
-              <label for="ime_ljubimci" class="form-label" th:text="#{ljubimci.ime}"></label>
-              <input type="text" class="form-control" id="imeLjubimci" name="imeLjubimci">
+              <label for="imeLjubimac" class="form-label" th:text="#{ljubimci.ime}"></label>
+              <input type="text" class="form-control" id="imeLjubimac" name="imeLjubimci" th:field="*{ime}">
               <!-- <div class="invalid-message" th:if="${#fields.hasErrors('imeLjubimci')}" th:errors="*{imeLjubimci}"></div> -->
             </div>
             <div class="form-group">
                 <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
-                <select class="form-control" id="vrsta_ljubimci">
-                    <option>Pas</option>
-                    <option>Mačka</option>
-                    <option>Hrčak</option>
-                    <option>Zamorac</option>
-                    <option>Miš</option>
-                    <option>Štakor</option>
-                    <option>Kunić</option>
-                    <option>Ptica</option>
-                    <option>Ribica</option>
-                    <option>Zmija</option>
-                    <option>Gušter</option>
-                    <option>Žaba</option>
-                    <option>Pauk</option>
-                    <option>Kornjača</option>
-                    <option>Patuljasta svinja</option>
-                    <option>Afrički tvor</option>
-                    <option>Činčila</option>
+                <select class="form-control" id="vrsta_ljubimci" th:field="*{vrsta}">
+                    <option th:value="Pas">Pas</option>
+                    <option th:value="Macka">Mačka</option>
+                    <option th:value="Hrcak">Hrčak</option>
+                    <option th:value="Zamorac">Zamorac</option>
+                    <option th:value="Mis">Miš</option>
+                    <option th:value="Stakor">Štakor</option>
+                    <option th:value="Kunic">Kunić</option>
+                    <option th:value="Ptica">Ptica</option>
+                    <option th:value="Ribica">Ribica</option>
+                    <option th:value="Zmija">Zmija</option>
+                    <option th:value="Guster">Gušter</option>
+                    <option th:value="Zaba">Žaba</option>
+                    <option th:value="Pauk">Pauk</option>
+                    <option th:value="Kornjaca">Kornjača</option>
+                    <option th:value="Patuljasta_svinja">Patuljasta svinja</option>
+                    <option th:value="Africki_tvor">Afrički tvor</option>
+                    <option th:value="Cincila">Činčila</option>
                 </select>
             <!-- <div class="invalid-message" th:if="${#fields.hasErrors('vrsta_ljubimci')}" th:errors="*{vrsta_ljubimci}"></div> -->
             </div>
             <div class="mb-3">
-              <label for="dob_ljubimci" class="form-label" th:text="#{ljubimci.dob}"></label>
-              <input type="number" class="form-control" id="dobLjubimci" name="dobLjubimci">
+              <label for="dobLjubimci" class="form-label" th:text="#{ljubimci.dob}"></label>
+              <input type="number" class="form-control" id="dobLjubimci" name="dobLjubimci" th:field="*{dob}">
               <!-- <div class="invalid-message" th:if="${#fields.hasErrors('dob_ljubimci')}" th:errors="*{dob_ljubimci}"></div> -->
             </div>
             <div class="mb-3">
                 <label for="veterinar" class="form-label" th:text="#{ljubimci.veterinar}"></label>
-                <input type="date" class="form-control" id="veterinar" name="veterinar">
+                <input type="date" class="form-control" id="veterinar" name="veterinar" th:field="*{veterinar}">
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="cijepljen" name="cijepljen">
+                <input type="checkbox" class="form-check-input" id="cijepljen" name="cijepljen" th:field="*{cijepljen}" value="da">
                 <label class="form-check-label" for="cijepljen" th:text="#{ljubimci.cijepljen2}"></label>
             </div>
             <div class="mb-3">
                 <label for="obuka" class="form-label" th:text="#{ljubimci.obuka}"></label>
-                <input type="text" class="form-control" id="obuka" name="obuka">
+                <input type="text" class="form-control" id="obuka" name="obuka" th:field="*{obuka}">
             </div>
             <div class="mb-3">
                 <label for="hrana" class="form-label" th:text="#{ljubimci.hrana}"></label>
-                <input type="text" class="form-control" id="hrana" name="hrana">
+                <input type="text" class="form-control" id="hrana" name="hrana" th:fiel="*{najdrazaHrana}">
             </div>
             <div class="mb-3">
                 <label for="igracka" class="form-label" th:text="#{ljubimci.igracka}"></label>
-                <input type="text" class="form-control" id="igracka" name="igracka">
+                <input type="text" class="form-control" id="igracka" name="igracka" th:field="*{najdrazaIgracka}">
             </div>
             <button type="submit" class="btn btn-primary">
                 <img height="40px" th:src="@{/images/malaSapa.png}"/>

@@ -31,4 +31,6 @@ public class LjubimacForm {
     private String igracka;
     private String cijepljen;
     private String obuka;
+    private String najdrazaHrana;
+    private String najdrazaIgracka;
 }

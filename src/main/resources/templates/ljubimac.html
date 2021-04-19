@@ -15,7 +15,7 @@
                         </div>
                         <br>
                         <button type="button" class="btn btn-primary">
-                            <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
+                            <img height="40px" th:src="@{/images/malaSapa.png}"/>
                             <p th:text="#{ljubimci.upload}" style="display: inline;"></p>
                         </button>
                     </div>
@@ -29,8 +29,8 @@
                             <p th:text="#{ljubimci.obuka} + ' ' +  ${ljubimac.obuka}"></p>
                             <p th:text="#{ljubimci.hrana} + ' ' +  ${ljubimac.hrana}"></p>
                             <p th:text="#{ljubimci.igracka} + ' ' +  ${ljubimac.igracka}"></p>
-                            <a class="btn btn-warning" role="button" th:href="@{/uredi-ljubimca(id=${ljubimac.id})}">
-                                <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
+                            <a class="btn btn-warning" role="button" th:href="@{/love-me/uredi-ljubimca(id=${ljubimac.id})}">
+                                <img height="40px" th:src="@{/images/malaSapa.png}"/>
                                 <p th:text="#{ljubimci.uredi}" style="display: inline;"></p>
                             </a>
                         </p>

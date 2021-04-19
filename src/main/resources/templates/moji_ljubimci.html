@@ -21,7 +21,7 @@
                         <p th:text="#{ljubimci.veterinar} + ' ' +  ${ljubimac.veterinar}"></p>
                         <p th:text="#{ljubimci.hrana} + ' ' +  ${ljubimac.hrana}"></p>
                         <p th:text="#{ljubimci.igracka} + ' ' +  ${ljubimac.igracka}"></p>
-                        <a class="btn btn-primary" th:href="@{/ljubimac(id=${ljubimac.id})}">
+                        <a class="btn btn-primary" th:href="@{/love-me/ljubimac(id=${ljubimac.id})}">
                             <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{ljubimci.detalji}">
                         </a>
                     </p>

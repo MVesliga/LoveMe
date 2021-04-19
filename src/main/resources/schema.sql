@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS korisnik (
 CREATE TABLE IF NOT EXISTS ljubimac (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   korisnik_id INT NOT NULL,
-  korisnicko_ime VARCHAR(45) NOT NULL,
+  korisnicko_ime VARCHAR(45) NULL,
   ime VARCHAR(45) NOT NULL,
   vrsta VARCHAR(45) NOT NULL,
   dob INT NOT NULL,

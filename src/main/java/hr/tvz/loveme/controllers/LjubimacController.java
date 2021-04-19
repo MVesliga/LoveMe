@@ -71,7 +71,7 @@ public class LjubimacController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.ljubimacForm", bindingResult);
             redirectAttributes.addFlashAttribute("ljubimacForm", ljubimacForm);
 
-            return "redirect:/love-me/moji_ljubimci";
+            return "redirect:/love-me/novi-ljubimac";
         }
 
         Korisnik korisnik = korisnikFacade.getKorisnikRepository().findByKorisnickoIme(principal.getName());
@@ -79,7 +79,7 @@ public class LjubimacController {
 
         ljubimacFacade.create(ljubimacForm);
 
-        return "redirect:/moji_ljubimci";
+        return "redirect:/love-me/moji-ljubimci";
     }
 
     @GetMapping("/uredi-ljubimca")
