@@ -2,34 +2,44 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head th:replace="fragments/head"></head>
 <body th:style="'background:url('+ @{/images/indexWallpaper.jpg} +') no-repeat fixed center; background-size: 100% 100%;'">
-    <nav th:replace="fragments/navBar"></nav>
-    <br>
-    <br>
-    <div class="container" style="display: flex; justify-content: center;">
-        <div class="row">
-            <div class="alert alert-danger" role="alert" th:if = "${#lists.isEmpty(ljubimci)}" th:text="#{ljubimci.nema}"></div>
-            <p><a class="btn btn-primary" th:href="@{/love-me/novi-ljubimac}">
-                <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{landing.gumb}">
-            </a></p>
-            <div class="card" style="width: 22rem;"  th:each="ljubimac : ${ljubimci}">
-                <br><p style="text-align: center;" th:text="${ljubimac.ime}"><hr></p>
-                <img src="../static/images/forumIcon.png" th:src="@{images/forumIcon.png}"/>
-                <div class="card-body">
-                    <p class="card-text">
-                        <p th:text="#{ljubimci.vrsta} + ' ' + ${ljubimac.vrsta}"></p>
-                        <p th:text="#{ljubimci.dob} + ' ' +  ${ljubimac.dob}"></p>
-                        <p th:text="#{ljubimci.veterinar} + ' ' +  ${ljubimac.veterinar}"></p>
-                        <p th:text="#{ljubimci.hrana} + ' ' +  ${ljubimac.hrana}"></p>
-                        <p th:text="#{ljubimci.igracka} + ' ' +  ${ljubimac.igracka}"></p>
-                        <a class="btn btn-primary" th:href="@{/love-me/ljubimac(id=${ljubimac.id})}">
-                            <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{ljubimci.detalji}">
-                        </a>
-                    </p>
-                </div>
-            </div>
-            </p>
-        </div>
+<nav th:replace="fragments/navBar"></nav>
+<br>
+<br>
+<div class="container">
+    <p><a class="btn btn-primary" th:href="@{/love-me/novi-ljubimac}">
+        <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{landing.gumb}">
+    </a></p>
+    <div th:if="${deleteLjubimacSuccess}" class="alert alert-info">
+        <p class="text-center" th:text="#{ljubimac.deleteLjubimacSuccess}">Ljubimac je uspjesno obrisan!</p>
     </div>
+    <div class="row">
+        <div class="alert alert-danger" role="alert" th:if="${#lists.isEmpty(ljubimci)}"
+             th:text="#{ljubimci.nema}"></div>
+        <div class="card" style="width: 22rem; margin-right: 1%; margin-bottom: 5%;" th:each="ljubimac : ${ljubimci}">
+            <br>
+            <p style="text-align: center;" th:text="${ljubimac.ime}">
+            <hr>
+            </p>
+            <div style="text-align: center">
+                <img height="70%" width="50%" th:src="@{/images/petIcon.png}"/>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                <p th:text="#{ljubimci.vrsta} + ' ' + ${ljubimac.vrsta}"></p>
+                <p th:text="#{ljubimci.dob} + ' ' +  ${ljubimac.dob}"></p>
+                <p th:text="#{ljubimci.veterinar} + ' ' +  ${#dates.format(ljubimac.veterinar, 'dd.MM.yyyy')}"></p>
+                <p th:text="#{ljubimci.hrana} + ' ' +  ${ljubimac.hrana}"></p>
+                <p th:text="#{ljubimci.igracka} + ' ' +  ${ljubimac.igracka}"></p>
+                <a class="btn btn-primary" th:href="@{/love-me/ljubimac(id=${ljubimac.id})}">
+                    <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{ljubimci.detalji}">
+                </a>
+                <a class="btn btn-danger" style="padding: 4.6%" th:href="@{/love-me/delete/ljubimac(ljubimacId=${ljubimac.id})}" th:text="#{label.delete}">Obrisi</a>
+                </p>
+            </div>
+        </div>
+        </p>
+    </div>
+</div>
 </div>
 <script>
 </script>

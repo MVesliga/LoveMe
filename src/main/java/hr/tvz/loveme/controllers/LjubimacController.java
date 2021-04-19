@@ -29,10 +29,14 @@ public class LjubimacController {
 
     private LjubimacFacade ljubimacFacade;
     private KorisnikFacade korisnikFacade;
+    private LjubimacConverter ljubimacConverter;
 
-    public LjubimacController(LjubimacFacade ljubimacFacade, KorisnikFacade korisnikFacade) {
+    public LjubimacController(LjubimacFacade ljubimacFacade,
+                              KorisnikFacade korisnikFacade,
+                              LjubimacConverter ljubimacConverter) {
         this.ljubimacFacade = ljubimacFacade;
         this.korisnikFacade = korisnikFacade;
+        this.ljubimacConverter = ljubimacConverter;
     }
 
     @GetMapping(value = "/moji-ljubimci")
@@ -84,9 +88,15 @@ public class LjubimacController {
 
     @GetMapping("/uredi-ljubimca")
     public String getLjubimacEdit(@RequestParam(value = "id")Integer id, Model model){
-        Ljubimac ljubimac = ljubimacFacade.getLjubimacRepository().findById(id).get();
 
-        model.addAttribute("ljubimac", ljubimac);
+        if (!model.containsAttribute("updateLjubimacForm")) {
+            Ljubimac ljubimac = ljubimacFacade.getLjubimacRepository().findById(id).get();
+            UpdateLjubimacForm updateLjubimacForm = ljubimacConverter.convertToForm(ljubimac);
+            model.addAttribute("updateLjubimacForm", updateLjubimacForm);
+        }
+
+        model.addAttribute("updateLjubimacForm", model.getAttribute("updateLjubimacForm"));
+
         return "uredi_ljubimca";
     }
 
@@ -96,16 +106,26 @@ public class LjubimacController {
                                     RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.ljubimacForm", bindingResult);
-            redirectAttributes.addFlashAttribute("ljubimacForm", updateLjubimacForm);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.updateLjubimacForm", bindingResult);
+            redirectAttributes.addFlashAttribute("updateLjubimacForm", updateLjubimacForm);
 
-            return "redirect:/moji_ljubimci";
+            return "redirect:/love-me/uredi-ljubimca";
         }
         Ljubimac ljubimac = ljubimacFacade.getLjubimacRepository().findById(updateLjubimacForm.getId()).get();
 
-        Ljubimac editedLjubimac = LjubimacConverter.convertUpdateLjubimacForm(updateLjubimacForm, ljubimac);
+        Ljubimac editedLjubimac = ljubimacConverter.convertUpdateLjubimacForm(updateLjubimacForm, ljubimac);
         ljubimacFacade.getLjubimacRepository().save(editedLjubimac);
 
-        return "redirect:/moji_ljubimci";
+        return "redirect:/love-me/moji-ljubimci";
+    }
+
+    @GetMapping("/delete/ljubimac")
+    public String deleteLjubimac(@RequestParam("ljubimacId") Integer ljubimacId,
+                                 RedirectAttributes redirectAttributes){
+        Ljubimac ljubimac = ljubimacFacade.getLjubimacRepository().findById(ljubimacId).get();
+        ljubimacFacade.getLjubimacRepository().deleteById(ljubimacId);
+
+        redirectAttributes.addFlashAttribute("deleteLjubimacSuccess", true);
+        return "redirect:/love-me/moji-ljubimci";
     }
 }

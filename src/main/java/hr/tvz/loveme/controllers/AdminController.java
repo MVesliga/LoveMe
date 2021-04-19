@@ -17,6 +17,12 @@ public class AdminController {
         this.korisnikFacade = korisnikFacade;
     }
 
+
+    /**
+     * Metoda koja se poziva prilikom navigiranja admin korisnika na ekran sa listom svih korisnika aplikacije.
+     * @param model objekt preko kojeg šaljemo listu korisnika na html stranicu
+     * @return html stranica sa tablicom svih korisnika aplikacije
+     */
     @GetMapping("/korisnici")
     public String getKorisniciList(Model model){
         model.addAttribute("listaKorisnika", korisnikFacade.getKorisnikRepository().findAll());
@@ -24,6 +30,12 @@ public class AdminController {
         return "korisnici";
     }
 
+    /**
+     * Metoda koja se poyiva prilikom klika na gumb za brisanje korisnika iz aplikacije
+     * @param korisnikId id korisnika kojeg želimo obrisati
+     * @param redirectAttributes objekt preko kojeg šaljemo varijablu u redirect metodi
+     * @return preusmjerenje na listu korisnika
+     */
     @GetMapping("/delete/korisnik")
     public String deleteKorisnik(@RequestParam("korisnikId") Integer korisnikId,
                                  RedirectAttributes redirectAttributes) {
