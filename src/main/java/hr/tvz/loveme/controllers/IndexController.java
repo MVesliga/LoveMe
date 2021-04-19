@@ -88,6 +88,11 @@ public class IndexController {
         return "redirect:/prijava";
     }
 
+    /**
+     * Metoda koja služi za dohvaćanje forme za prijavu korisnika.
+     * @param model objekt preko kojeg u html stranicu šaljemo formu za popunjavanje podataka o korisniku.
+     * @return
+     */
     @GetMapping("/prijava")
     public String getLoginForm(Model model){
         if (!model.containsAttribute("loginForm")) {
@@ -96,6 +101,15 @@ public class IndexController {
         return "login";
     }
 
+    /**
+     * Metoda koja se poziva nakon što se klikne gumb za predaju forme za prijavu.
+     * Provjerava da li postoje validacijske greške te ukoliko postoje ponovno se preusmjeri korisnika na ekran za popunjavanje forme
+     * sa prikladnim porukama o greškama.
+     * @param loginForm objekt koji predstavlja login formu
+     * @param bindingResult objekt na koji se mapiraju validacijske greške
+     * @param redirectAttributes objekt pomoću kojeg šaljemo podatke u zahtjevu za preusmjeravanje
+     * @return forma za prijavu, u slučaju greške javlja gresku.
+     */
     @PostMapping("/prijava")
     public String login(@ModelAttribute @Validated LoginForm loginForm,
                         BindingResult bindingResult,
@@ -110,11 +124,19 @@ public class IndexController {
         return "redirect:/love-me";
     }
 
+    /**
+     * Metoda koja služi za dohvaćanje pocetne stranice aplikacije LoveMe.
+     * @return
+     */
     @GetMapping("/love-me")
     public String getLandingPage() {
         return "landing";
     }
 
+    /**
+     * Metoda koja se poziva nakon što se klikne gumb za odjavu.
+     * @return 
+     */
     @PostMapping("/logout")
     public String logout() {
 

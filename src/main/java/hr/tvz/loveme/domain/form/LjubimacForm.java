@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 
 import hr.tvz.loveme.domain.Korisnik;
 
+
 @Getter
 @Setter
 @NoArgsConstructor

@@ -48,6 +48,10 @@ public class LjubimacController {
         return "moji_ljubimci";
     }
 
+    /**
+     * Metoda koja služi za dohvaćanje ljubimaca.
+     * @return
+     */
     @GetMapping("/ljubimac")
     public String getLjubimac(@RequestParam(value = "id")Integer id, Model model){
         Ljubimac ljubimac = ljubimacFacade.getLjubimacRepository().findById(id).get();
@@ -56,6 +60,10 @@ public class LjubimacController {
         return "ljubimac";
     }
 
+    /**
+     * Metoda koja služi za dohvaćanje forme za dodavanje novog ljubimca.
+     * @return
+     */
     @GetMapping("/novi-ljubimac")
     public String getLjubimacForm(Model model) {
         if (!model.containsAttribute("ljubimacForm")) {
