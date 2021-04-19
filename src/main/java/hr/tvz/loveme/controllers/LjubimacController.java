@@ -29,10 +29,14 @@ public class LjubimacController {
 
     private LjubimacFacade ljubimacFacade;
     private KorisnikFacade korisnikFacade;
+    private LjubimacConverter ljubimacConverter;
 
-    public LjubimacController(LjubimacFacade ljubimacFacade, KorisnikFacade korisnikFacade) {
+    public LjubimacController(LjubimacFacade ljubimacFacade,
+                              KorisnikFacade korisnikFacade,
+                              LjubimacConverter ljubimacConverter) {
         this.ljubimacFacade = ljubimacFacade;
         this.korisnikFacade = korisnikFacade;
+        this.ljubimacConverter = ljubimacConverter;
     }
 
     @GetMapping(value = "/moji-ljubimci")
@@ -44,6 +48,10 @@ public class LjubimacController {
         return "moji_ljubimci";
     }
 
+    /**
+     * Metoda koja služi za dohvaćanje ljubimaca.
+     * @return
+     */
     @GetMapping("/ljubimac")
     public String getLjubimac(@RequestParam(value = "id")Integer id, Model model){
         Ljubimac ljubimac = ljubimacFacade.getLjubimacRepository().findById(id).get();
@@ -52,6 +60,10 @@ public class LjubimacController {
         return "ljubimac";
     }
 
+    /**
+     * Metoda koja služi za dohvaćanje forme za dodavanje novog ljubimca.
+     * @return
+     */
     @GetMapping("/novi-ljubimac")
     public String getLjubimacForm(Model model) {
         if (!model.containsAttribute("ljubimacForm")) {
@@ -61,6 +73,10 @@ public class LjubimacController {
         return "novi_ljubimac";
     }
 
+    /**
+     * Metoda koja se poziva prilikom predaje forme za kreiranje novog ljubimca
+     * @return
+     */
     @PostMapping("/novi-ljubimac")
     public String addLjubimac(@ModelAttribute @Valid LjubimacForm ljubimacForm,
                                     BindingResult bindingResult,
@@ -79,33 +95,65 @@ public class LjubimacController {
 
         ljubimacFacade.create(ljubimacForm);
 
+        redirectAttributes.addFlashAttribute("createLjubimacSuccess", true);
         return "redirect:/love-me/moji-ljubimci";
     }
 
+    /**
+     * Metoda koja se poziva pirlikom klika na uređivanje podataka ljubimca
+     * @param id id ljubimca čije podatke uređujemo
+     * @return
+     */
     @GetMapping("/uredi-ljubimca")
     public String getLjubimacEdit(@RequestParam(value = "id")Integer id, Model model){
-        Ljubimac ljubimac = ljubimacFacade.getLjubimacRepository().findById(id).get();
 
-        model.addAttribute("ljubimac", ljubimac);
+        if (!model.containsAttribute("updateLjubimacForm")) {
+            Ljubimac ljubimac = ljubimacFacade.getLjubimacRepository().findById(id).get();
+            UpdateLjubimacForm updateLjubimacForm = ljubimacConverter.convertToForm(ljubimac);
+            model.addAttribute("updateLjubimacForm", updateLjubimacForm);
+        }
+
+        model.addAttribute("updateLjubimacForm", model.getAttribute("updateLjubimacForm"));
+
         return "uredi_ljubimca";
     }
 
+    /**
+     * Metoda koja se poziva prilikom predaje forme sa uređenim podacima ljubimca
+     * @param updateLjubimacForm forma sa uređenim podacima ljubimca
+     * @return
+     */
     @PostMapping("/uredi-ljubimca")
     public String editLjubimac(@ModelAttribute @Valid UpdateLjubimacForm updateLjubimacForm,
                                     BindingResult bindingResult,
                                     RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.ljubimacForm", bindingResult);
-            redirectAttributes.addFlashAttribute("ljubimacForm", updateLjubimacForm);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.updateLjubimacForm", bindingResult);
+            redirectAttributes.addFlashAttribute("updateLjubimacForm", updateLjubimacForm);
 
-            return "redirect:/moji_ljubimci";
+            return "redirect:/love-me/uredi-ljubimca";
         }
         Ljubimac ljubimac = ljubimacFacade.getLjubimacRepository().findById(updateLjubimacForm.getId()).get();
 
-        Ljubimac editedLjubimac = LjubimacConverter.convertUpdateLjubimacForm(updateLjubimacForm, ljubimac);
+        Ljubimac editedLjubimac = ljubimacConverter.convertUpdateLjubimacForm(updateLjubimacForm, ljubimac);
         ljubimacFacade.getLjubimacRepository().save(editedLjubimac);
 
-        return "redirect:/moji_ljubimci";
+        redirectAttributes.addFlashAttribute("updateLjubimacSuccess", true);
+        return "redirect:/love-me/moji-ljubimci";
+    }
+
+    /**
+     * Metoda koja se poziva prilikom klika na gumb za brisanje ljubimca.
+     * @param ljubimacId id ljubimca kojeg želimo obrisati
+     * @return
+     */
+    @GetMapping("/delete/ljubimac")
+    public String deleteLjubimac(@RequestParam("ljubimacId") Integer ljubimacId,
+                                 RedirectAttributes redirectAttributes){
+        ljubimacFacade.getLjubimacRepository().deleteById(ljubimacId);
+
+        redirectAttributes.addFlashAttribute("deleteLjubimacSuccess", true);
+        return "redirect:/love-me/moji-ljubimci";
     }
 }

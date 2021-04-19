@@ -10,11 +10,11 @@
 <div class="container">
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
-        <form>
-            <input type="hidden" id="id" th:value="${ljubimac.id}">
+        <form th:action="@{/love-me/uredi-ljubimca}" th:object="${updateLjubimacForm}" method="POST">
+            <input type="hidden" id="id" th:field="*{id}">
             <div class="mb-3">
               <label for="ime_ljubimci" class="form-label" th:text="#{ljubimci.ime}"></label>
-              <input type="text" class="form-control" id="ime_ljubimci" th:value="${ljubimac.ime}">
+              <input type="text" class="form-control" id="ime_ljubimci" th:field="*{ime}">
             </div>
             <div class="form-group">
                 <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
@@ -40,28 +40,28 @@
             </div>
             <div class="mb-3">
               <label for="dob_ljubimci" class="form-label" th:text="#{ljubimci.dob}"></label>
-              <input type="number" class="form-control" id="dob_ljubimci" th:value="${ljubimac.dob}">
+              <input type="number" class="form-control" id="dob_ljubimci" th:field="*{dob}">
             </div>
             <div class="mb-3">
                 <label for="veterinar" class="form-label" th:text="#{ljubimci.veterinar}"></label>
-                <input type="date" class="form-control" id="veterinar" th:value="${ljubimac.veterinar}">
+                <input type="date" class="form-control" id="veterinar" th:field="*{veterinar}">
               </div>
             <div class="mb-3 form-check">
-                <input th:if="${ljubimac.cijepljen}=='da'" type="checkbox" class="form-check-input" id="cijepljen" checked>
-                <input th:if="${ljubimac.cijepljen}=='ne'" type="checkbox" class="form-check-input" id="cijepljen">
+                <input th:if="*{cijepljen}=='da' ? checked : ''" type="checkbox" class="form-check-input" id="cijepljen" th:field="*{cijepljen}" value="da">
+                <!--<input th:if="*{cijepljen}!='da'" type="checkbox" class="form-check-input" id="cijepljen">-->
                 <label class="form-check-label" for="cijepljen" th:text="#{ljubimci.cijepljen2}"></label>
             </div>
             <div class="mb-3">
                 <label for="obuka" class="form-label" th:text="#{ljubimci.obuka}"></label>
-                <input type="text" class="form-control" id="obuka" th:value="${ljubimac.obuka}">
+                <input type="text" class="form-control" id="obuka" th:field="*{obuka}">
             </div>
             <div class="mb-3">
                 <label for="hrana" class="form-label" th:text="#{ljubimci.hrana}"></label>
-                <input type="text" class="form-control" id="hrana" th:value="${ljubimac.hrana}">
+                <input type="text" class="form-control" id="hrana" th:field="*{najdrazaHrana}">
             </div>
             <div class="mb-3">
                 <label for="igracka" class="form-label" th:text="#{ljubimci.igracka}"></label>
-                <input type="text" class="form-control" id="igracka" th:value="${ljubimac.igracka}">
+                <input type="text" class="form-control" id="igracka" th:field="*{najdrazaIgracka}">
             </div>
             <button type="submit" class="btn btn-primary">
                 <img height="40px" th:src="@{/images/malaSapa.png}"/>

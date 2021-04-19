@@ -25,7 +25,7 @@ public class LjubimacConverter implements Converter<LjubimacForm, Ljubimac> {
         return ljubimac;
     }
 
-    public static Ljubimac convertUpdateLjubimacForm(UpdateLjubimacForm updateLjubimacForm, Ljubimac updatedLjubimac) {
+    public Ljubimac convertUpdateLjubimacForm(UpdateLjubimacForm updateLjubimacForm, Ljubimac updatedLjubimac) {
         updatedLjubimac.setIme(updateLjubimacForm.getIme());
         updatedLjubimac.setVrsta(updateLjubimacForm.getVrsta());
         updatedLjubimac.setVeterinar(updateLjubimacForm.getVeterinar());
@@ -40,6 +40,7 @@ public class LjubimacConverter implements Converter<LjubimacForm, Ljubimac> {
 
     public UpdateLjubimacForm convertToForm(Ljubimac ljubimac) {
         UpdateLjubimacForm updateLjubimacForm = new UpdateLjubimacForm();
+        updateLjubimacForm.setId(ljubimac.getId());
         updateLjubimacForm.setIme(ljubimac.getIme());
         updateLjubimacForm.setVrsta(ljubimac.getVrsta());
         updateLjubimacForm.setDob(ljubimac.getDob());

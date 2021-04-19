@@ -32,7 +32,7 @@ public class KorisnikController {
     /**
      * Metoda koja se poziva prilikom dohvacanja profila ulogiranog korisnika.
      * @param model objekt pomocu kojeg se korisnicki objekt salje u html template
-     * @param principal objek pomocu kojeg se dohvacaju podaci trenutno ulogiranog korisnika
+     * @param principal objekt pomocu kojeg se dohvacaju podaci trenutno ulogiranog korisnika
      * @return stranica sa prikazom detalja korisnika
      */
     @GetMapping("/profil")
@@ -42,6 +42,12 @@ public class KorisnikController {
         return "profil";
     }
 
+    /**
+     * Metoda koja se poziva nakon što se klikne gumb za azuriranje profila.
+     * @param model objekt pomocu kojeg se korisnicki objekt salje u html template
+     * @param principal objekt pomocu kojeg se dohvacaju podaci trenutno ulogiranog korisnika
+     * @return stranica sa prikazom detalja korisnika za azuriranje
+     */
     @GetMapping("/profil/update")
     public String getUpdateProfil(Model model, Principal principal) {
         if (!model.containsAttribute("updateKorisnikForm")) {
@@ -52,6 +58,15 @@ public class KorisnikController {
 
         return "updateProfil";
     }
+
+    /**
+     * Metoda koja se poziva nakon što se klikne gumb za predaju forme za azuriranje profila.
+     * @param updateKorisnikForm objekt koji predstavlja azuriranu korisničku formu
+     * @param bindingResult objekt na koji se mapiraju validacijske greške
+     * @param redirectAttributes objekt pomoću kojeg šaljemo podatke u zahtjevu za preusmjeravanje
+     * @param principal objekt koji nam prikazuje koji je trenutni korisnik ulogiran
+     * @return stranica sa prikazom detalja korisnika nakon azuriranja
+     */
 
     @PostMapping("/profil/update")
     public String postUpadteProfil(@ModelAttribute @Valid UpdateKorisnikForm updateKorisnikForm,

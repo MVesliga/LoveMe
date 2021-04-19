@@ -8,6 +8,7 @@ import lombok.ToString;
 import java.sql.Date;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -20,11 +21,13 @@ public class UpdateLjubimacForm {
     private String ime;
     @NotBlank(message = "{registracijaForm.vrstaLjubimca.notBlank}")
     private String vrsta;
-    @NotBlank(message = "{registracijaForm.dobLjubimca.notBlank}")
+    @NotNull(message = "{registracijaForm.dobLjubimca.notBlank}")
     private Integer dob;
     private Date veterinar;
     private String hrana;
     private String igracka;
     private String cijepljen;
     private String obuka;
+    private String najdrazaHrana;
+    private String najdrazaIgracka;
 }
