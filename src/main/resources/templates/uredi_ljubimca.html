@@ -18,24 +18,24 @@
             </div>
             <div class="form-group">
                 <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
-                <select class="form-control" id="vrsta_ljubimci" th:value="${ljubimac.vrsta}">
-                    <option>Pas</option>
-                    <option>Mačka</option>
-                    <option>Hrčak</option>
-                    <option>Zamorac</option>
-                    <option>Miš</option>
-                    <option>Štakor</option>
-                    <option>Kunić</option>
-                    <option>Ptica</option>
-                    <option>Ribica</option>
-                    <option>Zmija</option>
-                    <option>Gušter</option>
-                    <option>Žaba</option>
-                    <option>Pauk</option>
-                    <option>Kornjača</option>
-                    <option>Patuljasta svinja</option>
-                    <option>Afrički tvor</option>
-                    <option>Činčila</option>
+                <select class="form-control" id="vrsta_ljubimci">
+                    <option th:value="#{vrsta.pas}" th:text="#{vrsta.pas}"></option>
+                    <option th:value="#{vrsta.macka}" th:text="#{vrsta.macka}"></option>
+                    <option th:value="#{vrsta.hrcak}" th:text="#{vrsta.hrcak}"></option>
+                    <option th:value="#{vrsta.zamorac}" th:text="#{vrsta.zamorac}"></option>
+                    <option th:value="#{vrsta.mis}" th:text="#{vrsta.mis}"></option>
+                    <option th:value="#{vrsta.stakor}" th:text="#{vrsta.stakor}"></option>
+                    <option th:value="#{vrsta.kunic}" th:text="#{vrsta.kunic}"></option>
+                    <option th:value="#{vrsta.ptica}" th:text="#{vrsta.ptica}"></option>
+                    <option th:value="#{vrsta.ribica}" th:text="#{vrsta.ribica}"></option>
+                    <option th:value="#{vrsta.zmija}" th:text="#{vrsta.zmija}"></option>
+                    <option th:value="#{vrsta.guster}" th:text="#{vrsta.guster}"></option>
+                    <option th:value="#{vrsta.zaba}" th:text="#{vrsta.zaba}"></option>
+                    <option th:value="#{vrsta.pauk}" th:text="#{vrsta.pauk}"></option>
+                    <option th:value="#{vrsta.kornjaca}" th:text="#{vrsta.kornjaca}"></option>
+                    <option th:value="#{vrsta.svinja}" th:text="#{vrsta.svinja}"></option>
+                    <option th:value="#{vrsta.tvor}" th:text="#{vrsta.tvor}"></option>
+                    <option th:value="#{vrsta.cincila}" th:text="#{vrsta.cincila}"></option>
                 </select>
             </div>
             <div class="mb-3">
@@ -64,11 +64,11 @@
                 <input type="text" class="form-control" id="igracka" th:value="${ljubimac.igracka}">
             </div>
             <button type="submit" class="btn btn-primary">
-                <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
+                <img height="40px" th:src="@{/images/malaSapa.png}"/>
                 <p th:text="#{ljubimci.spremi}" style="display: inline;"></p>
             </button>
         </form>
-        <a class="btn btn-danger float-right" th:href="@{/moji-ljubimci}" th:text="#{label.back}"></a>
+        <a class="btn btn-danger float-right" th:href="@{/love-me/moji-ljubimci}" th:text="#{label.back}"></a>
         </div>
     </div>
 </div>

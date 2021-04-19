@@ -11,10 +11,10 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div>
-                        <img src="../static/images/pas-profilna.jpeg" th:src="@{images/pas-profilna.jpeg}" width="90%" height="90%" id="profilna">
+                            <img th:src="@{${'/images/' + ljubimac.vrsta + '.png'}}" width="90%" height="90%"/>
                         </div>
                         <br>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary" disabled>
                             <img height="40px" th:src="@{/images/malaSapa.png}"/>
                             <p th:text="#{ljubimci.upload}" style="display: inline;"></p>
                         </button>
@@ -33,13 +33,9 @@
                                 <img height="40px" th:src="@{/images/malaSapa.png}"/>
                                 <p th:text="#{ljubimci.uredi}" style="display: inline;"></p>
                             </a>
+                            <a class="btn btn-danger float-right" th:href="@{/love-me/moji-ljubimci}" th:text="#{label.back}" style="padding: 15px;"></a>
                         </p>
                     </div>
-                    <br>
-                    <button type="button" class="btn btn-primary">
-                        <img height="40px" th:src="@{/images/malaSapa.png}"/>
-                        <p th:text="#{ljubimci.upload}" style="display: inline;"></p>
-                    </button>
                 </div>
             </div>
         </div>

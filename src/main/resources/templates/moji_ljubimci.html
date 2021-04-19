@@ -8,12 +8,9 @@
     <div class="container" style="display: flex; justify-content: center;">
         <div class="row">
             <div class="alert alert-danger" role="alert" th:if = "${#lists.isEmpty(ljubimci)}" th:text="#{ljubimci.nema}"></div>
-            <p><a class="btn btn-primary" th:href="@{/love-me/novi-ljubimac}">
-                <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{landing.gumb}">
-            </a></p>
             <div class="card" style="width: 22rem;"  th:each="ljubimac : ${ljubimci}">
                 <br><p style="text-align: center;" th:text="${ljubimac.ime}"><hr></p>
-                <img src="../static/images/forumIcon.png" th:src="@{images/forumIcon.png}"/>
+                <img th:src="@{${'/images/' + ljubimac.vrsta + '.png'}}"/>
                 <div class="card-body">
                     <p class="card-text">
                         <p th:text="#{ljubimci.vrsta} + ' ' + ${ljubimac.vrsta}"></p>
@@ -27,7 +24,22 @@
                     </p>
                 </div>
             </div>
-            </p>
+            <div class="card" style="width: 22rem;">
+                <br><p style="text-align: center;">???<hr></p>
+                <img src="../static/images/forumIcon.png" th:src="@{/images/questions.png}"/>
+                <div class="card-body">
+                    <p class="card-text">
+                        <p th:text="#{ljubimci.vrsta} + ' ???'"></p>
+                        <p th:text="#{ljubimci.dob} + ' ???'"></p>
+                        <p th:text="#{ljubimci.veterinar} + ' ???'"></p>
+                        <p th:text="#{ljubimci.hrana} + ' ???'"></p>
+                        <p th:text="#{ljubimci.igracka} + ' ???'"></p>
+                        <a class="btn btn-primary" th:href="@{/love-me/novi-ljubimac}">
+                            <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{landing.gumb}">
+                        </a>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
