@@ -24,6 +24,10 @@
                 <a class="nav-link" th:href="@{/love-me/forum}"><img height="30px" th:src="@{/images/forumIcon.png}">
                     <span th:text="#{nav.forum}">Forum</span></a>
             </li>
+            <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a class="nav-link" th:href="@{/love-me/korisnici}"><img height="30px" th:src="@{/images/korisniciIcon.png}">
+                    <span th:text="#{nav.korisnici}">Korisnici</span></a>
+            </li>
         </ul>
 
         <div class="form-check form-check-inline border-right">
