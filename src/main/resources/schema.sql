@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS korisnik (
 CREATE TABLE IF NOT EXISTS ljubimac (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   korisnik_id INT NOT NULL,
+  korisnicko_ime VARCHAR(45) NOT NULL,
   ime VARCHAR(45) NOT NULL,
   vrsta VARCHAR(45) NOT NULL,
   dob INT NOT NULL,
@@ -20,6 +21,7 @@ CREATE TABLE IF NOT EXISTS ljubimac (
   obuka VARCHAR(100) NULL,
   hrana VARCHAR(100) NULL,
   igracka VARCHAR(100) NULL,
+  FOREIGN KEY (korisnicko_ime) REFERENCES korisnik (korisnicko_ime),
   FOREIGN KEY (korisnik_id) REFERENCES korisnik (id)
   );
 

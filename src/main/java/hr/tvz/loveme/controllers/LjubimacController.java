@@ -1,6 +1,7 @@
 package hr.tvz.loveme.controllers;
 
 import hr.tvz.loveme.converter.LjubimacConverter;
+import hr.tvz.loveme.domain.Korisnik;
 import hr.tvz.loveme.domain.Ljubimac;
 import hr.tvz.loveme.domain.form.LjubimacForm;
 import hr.tvz.loveme.domain.form.UpdateLjubimacForm;
@@ -29,14 +30,16 @@ public class LjubimacController {
     private LjubimacFacade ljubimacFacade;
     private KorisnikFacade korisnikFacade;
 
-    public LjubimacController(LjubimacFacade ljubimacFacade) {
+    public LjubimacController(LjubimacFacade ljubimacFacade, KorisnikFacade korisnikFacade) {
         this.ljubimacFacade = ljubimacFacade;
+        this.korisnikFacade = korisnikFacade;
     }
 
     @GetMapping(value = "/moji-ljubimci")
-    public String getLjubimci(Model model) {
-        List<Ljubimac> listaLjubimaca = ljubimacFacade.getLjubimacRepository().findAll();
-
+    public String getLjubimci(Model model, Principal principal) {
+        Korisnik korisnik = korisnikFacade.getKorisnikRepository().findByKorisnickoIme(principal.getName());
+        List<Ljubimac> listaLjubimaca = ljubimacFacade.getLjubimacRepository().findByKorisnik(korisnik);
+        
         model.addAttribute("ljubimci", listaLjubimaca);
         return "moji_ljubimci";
     }
@@ -68,10 +71,11 @@ public class LjubimacController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.ljubimacForm", bindingResult);
             redirectAttributes.addFlashAttribute("ljubimacForm", ljubimacForm);
 
-            return "redirect:/moji_ljubimci";
+            return "redirect:/love-me/moji_ljubimci";
         }
 
-        ljubimacForm.setKorisnik(korisnikFacade.getKorisnikRepository().findByKorisnickoIme(principal.getName()));
+        Korisnik korisnik = korisnikFacade.getKorisnikRepository().findByKorisnickoIme(principal.getName());
+        ljubimacForm.setKorisnik(korisnik);
 
         ljubimacFacade.create(ljubimacForm);
 

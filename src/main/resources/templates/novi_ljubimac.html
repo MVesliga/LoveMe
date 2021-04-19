@@ -10,7 +10,7 @@
 <div class="container">
     <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
         <div class="col-md-8 box-bored-style">
-        <form  th:action="@{/novi-ljubimac}" th:object="${ljubimacForm}" method="POST">
+        <form  th:action="@{/love-me/novi-ljubimac}" th:object="${ljubimacForm}" method="POST">
             <div class="mb-3">
               <label for="ime_ljubimci" class="form-label" th:text="#{ljubimci.ime}"></label>
               <input type="text" class="form-control" id="imeLjubimci" name="imeLjubimci">
@@ -65,11 +65,11 @@
                 <input type="text" class="form-control" id="igracka" name="igracka">
             </div>
             <button type="submit" class="btn btn-primary">
-                <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
+                <img height="40px" th:src="@{/images/malaSapa.png}"/>
                 <p th:text="#{ljubimci.dodaj}" style="display: inline;"></p>
             </button>
         </form>
-        <a class="btn btn-danger float-right" th:href="@{/moji-ljubimci}" th:text="#{label.back}"></a>
+        <a class="btn btn-danger float-right" th:href="@{/love-me/moji-ljubimci}" th:text="#{label.back}"></a>
         </div>
     </div>
 </div>

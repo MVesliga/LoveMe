@@ -8,7 +8,7 @@
     <div class="container" style="display: flex; justify-content: center;">
         <div class="row">
             <div class="alert alert-danger" role="alert" th:if = "${#lists.isEmpty(ljubimci)}" th:text="#{ljubimci.nema}"></div>
-            <p><a class="btn btn-primary" th:href="@{/novi-ljubimac}">
+            <p><a class="btn btn-primary" th:href="@{/love-me/novi-ljubimac}">
                 <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{landing.gumb}">
             </a></p>
             <div class="card" style="width: 22rem;"  th:each="ljubimac : ${ljubimci}">
@@ -21,9 +21,8 @@
                         <p th:text="#{ljubimci.veterinar} + ' ' +  ${ljubimac.veterinar}"></p>
                         <p th:text="#{ljubimci.hrana} + ' ' +  ${ljubimac.hrana}"></p>
                         <p th:text="#{ljubimci.igracka} + ' ' +  ${ljubimac.igracka}"></p>
-                        <a class="btn btn-primary" role="button" th:href="@{/ljubimac(id=${ljubimac.id})}">
-                            <img height="40px" src="../static/images/malaSapa.png" th:src="@{images/malaSapa.png}"/>
-                            <p th:text="#{ljubimci.detalji}" style="display: inline;"></p>
+                        <a class="btn btn-primary" th:href="@{/ljubimac(id=${ljubimac.id})}">
+                            <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{ljubimci.detalji}">
                         </a>
                     </p>
                 </div>
