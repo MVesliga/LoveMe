@@ -11,3 +11,7 @@ INSERT INTO korisnik_uloga (korisnicko_ime, uloga) VALUES ('pero', 'ROLE_USER');
 INSERT INTO korisnik_uloga (korisnicko_ime, uloga) VALUES ('admin', 'ROLE_USER');
 INSERT INTO korisnik_uloga (korisnicko_ime, uloga) VALUES ('admin', 'ROLE_ADMIN');
 INSERT INTO korisnik_uloga (korisnicko_ime, uloga) VALUES ('luka', 'ROLE_USER');
+
+INSERT INTO ljubimac (ime, korisnik_id, korisnicko_ime, vrsta, dob, veterinar, cijepljen, obuka, hrana, igracka)
+VALUES ('Perin pas', 1, 'pero', 'pas', 2, TO_DATE('17/12/2015', 'DD/MM/YYYY'), 'da', 'ne', 'hrana', 'igracka'),
+('Perina macka', 1, 'pero', 'macka', 7, TO_DATE('17/12/2016', 'DD/MM/YYYY'), 'ne', 'ne', 'mjau', 'mjau');

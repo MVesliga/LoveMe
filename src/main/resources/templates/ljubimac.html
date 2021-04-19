@@ -2,51 +2,40 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head th:replace="fragments/head"></head>
 <body th:style="'background:url('+ @{/images/indexWallpaper.jpg} +') no-repeat fixed center; background-size: 100% 100%;'">
-<nav th:replace="fragments/navBar"></nav>
-<br>
-<br>
-<div class="container-fluid">
-    <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
-        <div class="col-md-8 box-bored-style">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div>
-                        <img th:src="@{/images/pas-profilna.jpeg}" width="90%"
-                             height="90%" id="profilna">
+    <nav th:replace="fragments/navBar"></nav>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
+            <div class="col-md-8 box-bored-style">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div>
+                        <img th:src="@{/images/petIcon.png}" width="90%" height="90%" id="profilna">
+                        </div>
+                        <br>
+                    </div>
+                    <div class="col-lg-8">
+                        <p>
+                            <p th:text="#{ljubimci.ime} + ' ' + ${ljubimac.ime}"></p>
+                            <p th:text="#{ljubimci.vrsta} + ' ' +  ${ljubimac.vrsta}"></p>
+                            <p th:text="#{ljubimci.dob} + ' ' +  ${ljubimac.dob}"></p>
+                            <p th:text="#{ljubimci.veterinar} + ' ' +  ${#dates.format(ljubimac.veterinar, 'dd.MM.yyyy')}"></p>
+                            <p th:text="#{ljubimci.cijepljen} + ' ' +  ${ljubimac.cijepljen}"></p>
+                            <p th:text="#{ljubimci.obuka} + ' ' +  ${ljubimac.obuka}"></p>
+                            <p th:text="#{ljubimci.hrana} + ' ' +  ${ljubimac.hrana}"></p>
+                            <p th:text="#{ljubimci.igracka} + ' ' +  ${ljubimac.igracka}"></p>
+                            <a class="btn btn-warning" role="button" th:href="@{/love-me/uredi-ljubimca(id=${ljubimac.id})}">
+                                <img height="40px" th:src="@{/images/malaSapa.png}"/>
+                                <p th:text="#{ljubimci.uredi}" style="display: inline;"></p>
+                            </a>
+                        </p>
                     </div>
                     <br>
-                    <button type="button" class="btn btn-primary">
-                        <img height="40px" th:src="@{/images/malaSapa.png}"/>
-                        <p th:text="#{ljubimci.upload}" style="display: inline;"></p>
-                    </button>
-                </div>
-                <div class="col-lg-8">
-                    <p>
-                    <p th:text="#{ljubimci.vrsta}"></p>
-                    <p th:text="#{ljubimci.ime}"></p>
-                    <p th:text="#{ljubimci.dob}"></p>
-                    <p th:text="#{ljubimci.veterinar}"></p>
-                    <p th:text="#{ljubimci.cijepljen}"></p>
-                    <p th:text="#{ljubimci.obuka}"></p>
-                    <p th:text="#{ljubimci.hrana}"></p>
-                    <p th:text="#{ljubimci.igracka}"></p>
-                    </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Optional JavaScript; choose one of the two! -->
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-        crossorigin="anonymous"></script>
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
--->
 </body>
 </html>
