@@ -12,6 +12,12 @@
     <div th:if="${deleteLjubimacSuccess}" class="alert alert-info">
         <p class="text-center" th:text="#{ljubimac.deleteLjubimacSuccess}">Ljubimac je uspjesno obrisan!</p>
     </div>
+    <div th:if="${updateLjubimacSuccess}" class="alert alert-info">
+        <p class="text-center" th:text="#{ljubimac.updateLjubimacSuccess}">Ljubimac je uspjesno ažuriran!</p>
+    </div>
+    <div th:if="${createLjubimacSuccess}" class="alert alert-info">
+        <p class="text-center" th:text="#{ljubimac.createLjubimacSuccess}">Ljubimac je uspjesno kreiran!</p>
+    </div>
     <div class="row">
         <div class="alert alert-danger" role="alert" th:if="${#lists.isEmpty(ljubimci)}"
              th:text="#{ljubimci.nema}"></div>

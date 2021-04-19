@@ -73,6 +73,10 @@ public class LjubimacController {
         return "novi_ljubimac";
     }
 
+    /**
+     * Metoda koja se poziva prilikom predaje forme za kreiranje novog ljubimca
+     * @return
+     */
     @PostMapping("/novi-ljubimac")
     public String addLjubimac(@ModelAttribute @Valid LjubimacForm ljubimacForm,
                                     BindingResult bindingResult,
@@ -91,9 +95,15 @@ public class LjubimacController {
 
         ljubimacFacade.create(ljubimacForm);
 
+        redirectAttributes.addFlashAttribute("createLjubimacSuccess", true);
         return "redirect:/love-me/moji-ljubimci";
     }
 
+    /**
+     * Metoda koja se poziva pirlikom klika na uređivanje podataka ljubimca
+     * @param id id ljubimca čije podatke uređujemo
+     * @return
+     */
     @GetMapping("/uredi-ljubimca")
     public String getLjubimacEdit(@RequestParam(value = "id")Integer id, Model model){
 
@@ -108,6 +118,11 @@ public class LjubimacController {
         return "uredi_ljubimca";
     }
 
+    /**
+     * Metoda koja se poziva prilikom predaje forme sa uređenim podacima ljubimca
+     * @param updateLjubimacForm forma sa uređenim podacima ljubimca
+     * @return
+     */
     @PostMapping("/uredi-ljubimca")
     public String editLjubimac(@ModelAttribute @Valid UpdateLjubimacForm updateLjubimacForm,
                                     BindingResult bindingResult,
@@ -124,13 +139,18 @@ public class LjubimacController {
         Ljubimac editedLjubimac = ljubimacConverter.convertUpdateLjubimacForm(updateLjubimacForm, ljubimac);
         ljubimacFacade.getLjubimacRepository().save(editedLjubimac);
 
+        redirectAttributes.addFlashAttribute("updateLjubimacSuccess", true);
         return "redirect:/love-me/moji-ljubimci";
     }
 
+    /**
+     * Metoda koja se poziva prilikom klika na gumb za brisanje ljubimca.
+     * @param ljubimacId id ljubimca kojeg želimo obrisati
+     * @return
+     */
     @GetMapping("/delete/ljubimac")
     public String deleteLjubimac(@RequestParam("ljubimacId") Integer ljubimacId,
                                  RedirectAttributes redirectAttributes){
-        Ljubimac ljubimac = ljubimacFacade.getLjubimacRepository().findById(ljubimacId).get();
         ljubimacFacade.getLjubimacRepository().deleteById(ljubimacId);
 
         redirectAttributes.addFlashAttribute("deleteLjubimacSuccess", true);

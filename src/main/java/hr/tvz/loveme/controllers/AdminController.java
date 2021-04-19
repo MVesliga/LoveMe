@@ -31,7 +31,7 @@ public class AdminController {
     }
 
     /**
-     * Metoda koja se poyiva prilikom klika na gumb za brisanje korisnika iz aplikacije
+     * Metoda koja se poziva prilikom klika na gumb za brisanje korisnika iz aplikacije
      * @param korisnikId id korisnika kojeg želimo obrisati
      * @param redirectAttributes objekt preko kojeg šaljemo varijablu u redirect metodi
      * @return preusmjerenje na listu korisnika
