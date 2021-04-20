@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label for="vrsta_ljubimci" class="form-label" th:text="#{ljubimci.vrsta}"></label>
-                <select class="form-control" id="vrsta_ljubimci">
+                <select class="form-control" id="vrsta_ljubimci" th:field="*{vrsta}">
                     <option th:value="#{vrsta.pas}" th:text="#{vrsta.pas}"></option>
                     <option th:value="#{vrsta.macka}" th:text="#{vrsta.macka}"></option>
                     <option th:value="#{vrsta.hrcak}" th:text="#{vrsta.hrcak}"></option>

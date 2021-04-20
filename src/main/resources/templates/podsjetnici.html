@@ -1,0 +1,64 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body th:style="'background:url('+ @{/images/indexWallpaper.jpg} +') no-repeat fixed center; background-size: 100% 100%;'">
+    <nav th:replace="fragments/navBar"></nav>
+    <br>
+    <br>
+    <div class="container" style="display: flex; justify-content: center;">
+    <div th:if="${deletePodsjetnikSuccess}" class="alert alert-info">
+        <p class="text-center" th:text="#{podsjetnik.deletePodsjetnikSuccess}"></p>
+    </div>
+    <div th:if="${updatePodsjetnikSuccess}" class="alert alert-info">
+        <p class="text-center" th:text="#{podsjetnik.updatePodsjetnikSuccess}"></p>
+    </div>
+    <div th:if="${createPodsjetnikSuccess}" class="alert alert-info">
+        <p class="text-center" th:text="#{podsjetnik.createPodsjetnikSuccess}"></p>
+    </div>
+    </div>
+    <div class="container" style="display: flex; justify-content: center;">
+        <div class="alert alert-danger" role="alert" th:if = "${#lists.isEmpty(podsjetnici)}" th:text="#{podsjetnici.nema}"></div>
+        <div class="accordion w-50" id="accordion">
+            <div class="card" style=" margin-bottom: 2%;" th:each="podsjetnik : ${podsjetnici}">
+                <div class="card-header" th:id="${podsjetnik.id}">
+                    <h2 class="mb-0">
+                    <button th:text="${podsjetnik.naslov}" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" th:data-target="${'#collapse' + podsjetnik.id}" aria-expanded="true" th:aria-controls="${'collapse' + podsjetnik.id}">
+                    </button>
+                    </h2>
+                </div>
+        
+                <div th:id="${'collapse' + podsjetnik.id}" class="collapse" th:aria-labelledby="${'heading' + podsjetnik.id}" data-parent="#accordion">
+                    <div class="card-body">
+                        <small class="text-muted float-right" th:text="${podsjetnik.vrsta}"></small>
+                        <br><p th:text="${podsjetnik.ljubimac_ime}"></p><hr>
+                        <p th:text="#{podsjetnici.naputak}"></p>
+                        <i><p th:text="${podsjetnik.naputak}"></p></i>
+                        <b><p style="text-align: center; font-size: small;" th:text="${podsjetnik.datum} + ' ' +  ${podsjetnik.vrijeme}"></p></b>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-warning" role="button" th:href="@{/love-me/uredi-podsjetnik(id=${podsjetnik.id})}">
+                            <img height="40px" th:src="@{/images/malaSapa.png}"/>
+                            <p th:text="#{ljubimci.uredi}" style="display: inline;"></p>
+                        </a>
+                        <a class="btn btn-danger float-right" style="padding: 15px;" th:href="@{/love-me/delete/podsjetnik(podsjetnikId=${podsjetnik.id})}" th:text="#{label.delete}"></a>
+                    </div>
+                </div>
+            </div>
+            <p style="display: flex; justify-content: center;"><a class="btn btn-primary" th:href="@{/love-me/novi-podsjetnik}">
+                <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{podsjetnici.gumb}">
+            </a></p>
+        </div>
+    </div>
+<!-- Optional JavaScript; choose one of the two! -->
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+-->
+</body>
+</html>

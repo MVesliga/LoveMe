@@ -15,6 +15,8 @@
         <div th:if="${createLjubimacSuccess}" class="alert alert-info">
             <p class="text-center" th:text="#{ljubimac.createLjubimacSuccess}">Ljubimac je uspjesno kreiran!</p>
         </div>
+    </div>
+    <div class="container" style="display: flex; justify-content: center;">
         <div class="row">
             <div class="alert alert-danger" role="alert" th:if = "${#lists.isEmpty(ljubimci)}" th:text="#{ljubimci.nema}"></div>
             <div class="card" style="width: 22rem; margin-right: 1%; margin-bottom: 5%;"  th:each="ljubimac : ${ljubimci}">
@@ -34,7 +36,7 @@
                     </p>
                 </div>
             </div>
-            <div class="card" style="width: 22rem;">
+            <div class="card" style="width: 22rem; margin-right: 1%; margin-bottom: 5%;">
                 <br><p style="text-align: center;">???<hr></p>
                 <img src="../static/images/forumIcon.png" th:src="@{/images/questions.png}"/>
                 <div class="card-body">
@@ -49,53 +51,9 @@
                         </a>
                     </p>
                 </div>
-<nav th:replace="fragments/navBar"></nav>
-<br>
-<br>
-<div class="container">
-    <p><a class="btn btn-primary" th:href="@{/love-me/novi-ljubimac}">
-        <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{landing.gumb}">
-    </a></p>
-    <div th:if="${deleteLjubimacSuccess}" class="alert alert-info">
-        <p class="text-center" th:text="#{ljubimac.deleteLjubimacSuccess}">Ljubimac je uspjesno obrisan!</p>
-    </div>
-    <div th:if="${updateLjubimacSuccess}" class="alert alert-info">
-        <p class="text-center" th:text="#{ljubimac.updateLjubimacSuccess}">Ljubimac je uspjesno ažuriran!</p>
-    </div>
-    <div th:if="${createLjubimacSuccess}" class="alert alert-info">
-        <p class="text-center" th:text="#{ljubimac.createLjubimacSuccess}">Ljubimac je uspjesno kreiran!</p>
-    </div>
-    <div class="row">
-        <div class="alert alert-danger" role="alert" th:if="${#lists.isEmpty(ljubimci)}"
-             th:text="#{ljubimci.nema}"></div>
-        <div class="card" style="width: 22rem; margin-right: 1%; margin-bottom: 5%;" th:each="ljubimac : ${ljubimci}">
-            <br>
-            <p style="text-align: center;" th:text="${ljubimac.ime}">
-            <hr>
-            </p>
-            <div style="text-align: center">
-                <img height="70%" width="50%" th:src="@{/images/petIcon.png}"/>
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                <p th:text="#{ljubimci.vrsta} + ' ' + ${ljubimac.vrsta}"></p>
-                <p th:text="#{ljubimci.dob} + ' ' +  ${ljubimac.dob}"></p>
-                <p th:text="#{ljubimci.veterinar} + ' ' +  ${#dates.format(ljubimac.veterinar, 'dd.MM.yyyy')}"></p>
-                <p th:text="#{ljubimci.hrana} + ' ' +  ${ljubimac.hrana}"></p>
-                <p th:text="#{ljubimci.igracka} + ' ' +  ${ljubimac.igracka}"></p>
-                <a class="btn btn-primary" th:href="@{/love-me/ljubimac(id=${ljubimac.id})}">
-                    <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{ljubimci.detalji}">
-                </a>
-                <a class="btn btn-danger" style="padding: 4.6%" th:href="@{/love-me/delete/ljubimac(ljubimacId=${ljubimac.id})}" th:text="#{label.delete}">Obrisi</a>
-                </p>
             </div>
         </div>
-        </p>
     </div>
-</div>
-</div>
-<script>
-</script>
 <!-- Optional JavaScript; choose one of the two! -->
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
