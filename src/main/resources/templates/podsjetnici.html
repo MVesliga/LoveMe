@@ -33,7 +33,7 @@
                         <br><p th:text="${podsjetnik.ljubimac_ime}"></p><hr>
                         <p th:text="#{podsjetnici.naputak}"></p>
                         <i><p th:text="${podsjetnik.naputak}"></p></i>
-                        <b><p style="text-align: center; font-size: small;" th:text="${podsjetnik.datum} + ' ' +  ${podsjetnik.vrijeme}"></p></b>
+                        <b><p style="text-align: center; font-size: small;" th:text="${#dates.format(podsjetnik.datum, 'dd.MM.yyyy')} + ' ' +  ${podsjetnik.vrijeme}"></p></b>
                     </div>
                     <div class="card-footer">
                         <a class="btn btn-warning" role="button" th:href="@{/love-me/uredi-podsjetnik(id=${podsjetnik.id})}">

@@ -42,6 +42,11 @@ public class PodsjetnikController {
         this.podsjetnikConverter = podsjetnikConverter;
     }
 
+    /**
+     * Metoda koja se poziva prilikom dohvaćanja svih podsjetnika koje je korisnik kreirao.
+     *
+     * @return lista podsjetnika
+     */
     @GetMapping(value = "/podsjetnici")
     public String getPodsjetnici(Model model, Principal principal) {
         Korisnik korisnik = korisnikFacade.getKorisnikRepository().findByKorisnickoIme(principal.getName());
@@ -51,6 +56,11 @@ public class PodsjetnikController {
         return "podsjetnici";
     }
 
+    /**
+     * Metoda koja se poziva kada korisnik želi unjeti novi podsjetnik.
+     *
+     * @return forma za unos novog podsjetnika
+     */
     @GetMapping(value = "/novi-podsjetnik")
     public String getPodsjetnikForm(Model model, Principal principal) {
         if (!model.containsAttribute("podsjetnkForm")) {
@@ -64,6 +74,12 @@ public class PodsjetnikController {
         return "novi_podsjetnik";
     }
 
+    /**
+     * Metoda koja se poziva prilikom predaje forme za unos novog podsjetnika
+     * @param podsjetnikForm forma koja sadrži podatke novog podsjetnika
+     *
+     * @return preusmjerenje na listu podsjetnika
+     */
     @PostMapping("/novi-podsjetnik")
     public String addPodsjetnik(@ModelAttribute @Valid PodsjetnikForm podsjetnikForm,
                                     BindingResult bindingResult,
@@ -86,6 +102,12 @@ public class PodsjetnikController {
         return "redirect:/love-me/podsjetnici";
     }
 
+    /**
+     * Metoda koja se poziva prilikom uređivanja podataka na podsjetniku
+     * @param id id podsjetnika kojeg uređujemo
+     *
+     * @return forma sa podacima podsjetnika
+     */
     @GetMapping("/uredi-podsjetnik")
     public String getPodsjetnikEdit(@RequestParam(value = "id")Integer id, Model model, Principal principal){
 
@@ -104,6 +126,12 @@ public class PodsjetnikController {
         return "uredi_podsjetnik";
     }
 
+    /**
+     * Metoda koja se poziva kada se predaje forma za uređivanje podsjetnika
+     * @param updatePodsjetnikForm forma sa uređenim podacima podsjetnika
+     *
+     * @return preusmjerenje na listu podsjetnika
+     */
     @PostMapping("/uredi-podsjetnik")
     public String editPodsjetnik(@ModelAttribute @Valid UpdatePodsjetnikForm updatePodsjetnikForm,
                                     BindingResult bindingResult,
@@ -124,6 +152,12 @@ public class PodsjetnikController {
         return "redirect:/love-me/podsjetnici";
     }
 
+    /**
+     * Metoda koja se poziva prilikom klika na gumb za brisanje podsjetnika
+     * @param podsjetnikId id podsjetnika kojeg želimo obrisati
+     *
+     * @return preusmjerenje na listu podsjetnika
+     */
     @GetMapping("/delete/podsjetnik")
     public String deletePodsjetnik(@RequestParam("podsjetnikId") Integer podsjetnikId,
                                  RedirectAttributes redirectAttributes){
