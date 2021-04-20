@@ -45,3 +45,19 @@ CREATE TABLE IF NOT EXISTS podsjetnik (
   FOREIGN KEY (korisnicko_ime) REFERENCES korisnik (korisnicko_ime),
   FOREIGN KEY (korisnik_id) REFERENCES korisnik (id)
   );
+
+CREATE TABLE IF NOT EXISTS objava (
+ id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ korisnik_id INT NOT NULL,
+ sadrzaj VARCHAR(255),
+ datum_objave TIMESTAMP NOT NULL,
+ FOREIGN KEY (korisnik_id) REFERENCES korisnik (id)
+);
+
+CREATE TABLE IF NOT EXISTS komentar (
+ id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ korisnik_id INT NOT NULL,
+ objava_id INT NOT NULL,
+ datum_komentara TIMESTAMP NOT NULL,
+ sadrzaj VARCHAR(255)
+);

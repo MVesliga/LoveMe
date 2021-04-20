@@ -5,20 +5,65 @@
 <nav th:replace="fragments/navBar"></nav>
 <br>
 <br>
-<div class="container">
-    <h1>Forum</h1>
+<div class="container" style="display: flex; justify-content: center;">
+    <div th:if="${deleteObjavaSuccess}" class="alert alert-info">
+        <p class="text-center" th:text="#{objava.deleteObjavaSuccess}"></p>
+    </div>
+    <div th:if="${updateObjavaSuccess}" class="alert alert-info">
+        <p class="text-center" th:text="#{objava.updateObjavaSuccess}"></p>
+    </div>
+    <div th:if="${createObjavaSuccess}" class="alert alert-info">
+        <p class="text-center" th:text="#{objava.createObjavaSuccess}"></p>
+    </div>
 </div>
+<div class="container" style="display: flex; justify-content: center;">
+    <div class="alert alert-danger" role="alert" th:if="${#lists.isEmpty(objave)}" th:text="#{objave.nema}"></div>
+    <div class="accordion w-50" id="accordion">
+        <div class="card" style=" margin-bottom: 2%;" th:each="objava : ${objave}">
+            <div class="card-header" th:id="${objava.id}">
+                <h2 class="mb-0">
+                    <button th:text="${objava.sadrzaj}" style="text-decoration: none;"
+                            class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                            th:data-target="${'#collapse' + objava.id}" aria-expanded="true"
+                            th:aria-controls="${'collapse' + objava.id}">
+                    </button>
+                </h2>
+            </div>
 
-<!-- Optional JavaScript; choose one of the two! -->
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-        crossorigin="anonymous"></script>
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
--->
+            <div th:id="${'collapse' + objava.id}" class="collapse" th:aria-labelledby="${'heading' + objava.id}"
+                 data-parent="#accordion">
+                <div class="card-body" th:each="komentar: ${komentari}">
+                    <div th:if="${komentar.objava.id == objava.id}" style="border: 1px solid black; border-radius: 15px;">
+                        <br>
+                        <p><span th:text="#{objava.objavio}"></span> <b><span
+                                th:text="${komentar.korisnik.korisnickoIme}"></span></b></p>
+                        <hr>
+                        <p th:text="#{podsjetnici.naputak}"></p>
+                        <i><p th:text="${komentar.sadrzaj}"></p></i>
+                        <b><p style="text-align: center; font-size: small;"
+                              th:text="${#dates.format(komentar.datumKomentara, 'dd.MM.yyyy')}"></p></b>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a th:if="${objava.korisnik.korisnickoIme == ulogiraniKorisnik}" class="btn btn-warning"
+                       role="button" th:href="@{/love-me/uredi-objavu(id=${objava.id})}">
+                        <img height="40px" th:src="@{/images/malaSapa.png}"/>
+                        <p th:text="#{objava.uredi}" style="display: inline;"></p>
+                    </a>
+                    <a class="btn btn-primary" role="button" th:onclick="alert('Ova funkcionalnost još nije implementirana!')">
+                        <img height="40px" th:src="@{/images/forumIcon.png}"/>
+                        <p th:text="#{komentar.dodaj}" style="display: inline;"></p>
+                    </a>
+                    <a th:if="${objava.korisnik.korisnickoIme == ulogiraniKorisnik}" class="btn btn-danger float-right"
+                       style="padding: 15px;" th:href="@{/love-me/delete/objava(objavaId=${objava.id})}"
+                       th:text="#{label.delete}"></a>
+                </div>
+            </div>
+        </div>
+        <p style="display: flex; justify-content: center;"><a class="btn btn-primary" th:href="@{/love-me/nova-objava}">
+            <img height="40px" th:src="@{/images/malaSapa.png}" th:text="#{objava.dodaj}">
+        </a></p>
+    </div>
+</div>
 </body>
 </html>

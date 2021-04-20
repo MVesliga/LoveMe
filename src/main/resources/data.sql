@@ -22,3 +22,7 @@ VALUES ('Perin afrički tvor', 1, 'pero', 'Afrički tvor', 2, TO_DATE('17/12/201
 INSERT INTO podsjetnik (korisnik_id, korisnicko_ime, naslov, ljubimac_ime, vrsta, datum, vrijeme, naputak)
 VALUES (1, 'pero', 'Perin afrički tvor ide veterinaru', 'Perin afrički tvor', 'zdravlje', '2021-07-29', '13:30', 'ne kasniti'),
 (1, 'pero', 'Voditi Perinu mačku u šetnju', 'Perina mačka', 'život', '2021-04-29', '07:00', '');
+
+INSERT INTO objava (korisnik_id, sadrzaj, datum_objave) VALUES (1, 'Prva testna objava na forumu!',  TO_DATE('17/12/2016', 'DD/MM/YYYY'));
+INSERT INTO komentar (korisnik_id, objava_id, sadrzaj, datum_komentara) VALUES (1, 1, 'Kakav igrac, kakav igrac!', TO_DATE('17/12/2016', 'DD/MM/YYYY'));
+INSERT INTO komentar (korisnik_id, objava_id, sadrzaj, datum_komentara) VALUES (1, 1, 'Zapravo nemas pojma!', TO_DATE('17/12/2016', 'DD/MM/YYYY'));

@@ -1,4 +1,3 @@
-/*
 package hr.tvz.loveme;
 
 import org.junit.jupiter.api.Test;
@@ -12,4 +11,3 @@ class LovemeApplicationTests {
     }
 
 }
-*/

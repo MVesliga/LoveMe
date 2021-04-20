@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body th:style="'background:url('+ @{/images/indexWallpaper.jpg} +') no-repeat fixed center; background-size: 100% 100%;'">
+
+<nav th:replace="fragments/navBar"></nav>
+<br>
+<br>
+
+<div class="container">
+    <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
+        <div class="col-md-8 box-bored-style">
+        <form  th:action="@{/love-me/nova-objava}" th:object="${objava}" method="POST">
+            <div class="mb-3">
+              <label for="imeLjubimac" class="form-label" th:text="#{objava.sadrzaj}"></label>
+              <input type="text" class="form-control" id="imeLjubimac" name="imeLjubimci" th:field="*{sadrzaj}">
+            </div>
+               <div class="invalid-message" th:if="${#fields.hasErrors('sadrzaj')}" th:errors="*{sadrzaj}"></div>
+            <div class="mb-3">
+                <label for="datumPodsjetnici" class="form-label" th:text="#{objava.datum}"></label>
+                <input type="date" class="form-control" id="datumPodsjetnici" name="datumPodsjetnici" th:field="*{datumObjave}">
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <img height="40px" th:src="@{/images/malaSapa.png}"/>
+                <p th:text="#{objava.dodaj}" style="display: inline;"></p>
+            </button>
+        </form>
+        <a class="btn btn-danger float-right" th:href="@{/love-me/forum}" th:text="#{label.back}"></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
