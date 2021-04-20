@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body th:style="'background:url('+ @{/images/indexWallpaper.jpg} +') no-repeat fixed center; background-size: 100% 100%;'">
+
+<nav th:replace="fragments/navBar"></nav>
+<br>
+<br>
+
+<div class="container">
+    <div class="d-flex justify-content-center" th:style="'margin-top: 5%;'">
+        <div class="col-md-8 box-bored-style">
+        <form  th:action="@{/love-me/novi-podsjetnik}" th:object="${podsjetnikForm}" method="POST">
+            <div class="mb-3">
+              <label for="naslovPodsjetnici" class="form-label" th:text="#{podsjetnici.naslov}"></label>
+              <input type="text" class="form-control" id="naslovPodsjetnici" name="naslovPodsjetnici" th:field="*{naslov}">
+            </div>
+            <div class="form-group">
+                <label for="vrstaPodsjetnik" class="form-label" th:text="#{podsjetnici.vrsta}"></label>
+                <select class="form-control" id="vrstaPodsjetnik" th:field="*{vrsta}">
+                    <option th:value="#{vrsta.zdravlje}" th:text="#{vrsta.zdravlje}"></option>
+                    <option th:value="#{vrsta.ljepota}" th:text="#{vrsta.ljepota}"></option>
+                    <option th:value="#{vrsta.rekreacija}" th:text="#{vrsta.rekreacija}"></option>
+                    <option th:value="#{vrsta.obuka}" th:text="#{vrsta.obuka}"></option>
+                    <option th:value="#{vrsta.natjecanje}" th:text="#{vrsta.natjecanje}"></option>
+                    <option th:value="#{vrsta.prehrana}" th:text="#{vrsta.prehrana}"></option>
+                    <option th:value="#{vrsta.ostalo}" th:text="#{vrsta.ostalo}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ljubimac_imePodsjetnici" class="form-label" th:text="#{podsjetnici.ime}"></label>
+                <select class="form-control" id="ljubimac_imePodsjetnici" th:field="*{ljubimac_ime}">
+                    <option th:each="ljubimac : ${ljubimci}" th:value="${ljubimac.ime}" th:text="${ljubimac.ime}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="datumPodsjetnici" class="form-label" th:text="#{podsjetnici.datum}"></label>
+                <input type="date" class="form-control" id="datumPodsjetnici" name="datumPodsjetnici" th:field="*{datum}">
+            </div>
+            <div class="mb-3">
+                <label for="vrijemePodsjetnici" class="form-label" th:text="#{podsjetnici.vrijeme}"></label>
+                <input type="time" class="form-control" id="vrijemePodsjetnici" name="vrijemePodsjetnici" th:field="*{vrijeme}">
+            </div>
+            <div class="mb-3">
+                <label for="naputakPodsjetnici" class="form-label" th:text="#{podsjetnici.naputak}"></label>
+                <input type="text" class="form-control" id="naputakPodsjetnici" name="naputakPodsjetnici" th:field="*{naputak}">
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <img height="40px" th:src="@{/images/malaSapa.png}"/>
+                <p th:text="#{podsjetnici.dodaj}" style="display: inline;"></p>
+            </button>
+        </form>
+        <a class="btn btn-danger float-right" th:href="@{/love-me/podsjetnici}" th:text="#{label.back}"></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

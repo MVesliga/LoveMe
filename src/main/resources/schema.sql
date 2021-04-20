@@ -31,3 +31,17 @@ CREATE TABLE IF NOT EXISTS korisnik_uloga (
   uloga VARCHAR(45) NOT NULL,
   FOREIGN KEY (korisnicko_ime) REFERENCES korisnik (korisnicko_ime)
 );
+
+CREATE TABLE IF NOT EXISTS podsjetnik (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  korisnik_id INT NOT NULL,
+  korisnicko_ime VARCHAR(45) NULL,
+  naslov VARCHAR(45) NULL,
+  ljubimac_ime VARCHAR(45) NOT NULL,
+  vrsta VARCHAR(45) NOT NULL,
+  datum DATE NOT NULL,
+  vrijeme VARCHAR(6) NOT NULL,
+  naputak VARCHAR(100) NULL,
+  FOREIGN KEY (korisnicko_ime) REFERENCES korisnik (korisnicko_ime),
+  FOREIGN KEY (korisnik_id) REFERENCES korisnik (id)
+  );
