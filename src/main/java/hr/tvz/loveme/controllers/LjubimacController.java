@@ -39,6 +39,11 @@ public class LjubimacController {
         this.ljubimacConverter = ljubimacConverter;
     }
 
+    /**
+     * Metoda koja se poziva prilikom dohvaćanja liste ljubimaca.
+     *
+     * @return stranica sa svim ljubimcima koje je korisnik unio
+     */
     @GetMapping(value = "/moji-ljubimci")
     public String getLjubimci(Model model, Principal principal) {
         Korisnik korisnik = korisnikFacade.getKorisnikRepository().findByKorisnickoIme(principal.getName());
